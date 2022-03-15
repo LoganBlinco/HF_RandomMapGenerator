@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06665874813b3ae41b8979b0b999a079, type: 3}
+  m_Name: Grassland
+  m_EditorClassIdentifier: 
+  baseBiomeBlocks:
+  - {fileID: 11400000, guid: 1cc1c0a024648324187e583f1be24521, type: 2}
+  - {fileID: 11400000, guid: de22dd22bd271ba44bab20c7e3e3a211, type: 2}
+  baseDetails:
+  - {fileID: 11400000, guid: aa7c260554964be41961a2a00cbd8868, type: 2}
+  - {fileID: 11400000, guid: 40b08ed4a1dd50f4f98cd4ab15fcb95f, type: 2}
+  middleDensityObjects:
+  - {fileID: 11400000, guid: 13f4769caaa3a2341a8b9d5a9b345bb7, type: 2}
+  - {fileID: 11400000, guid: da0cbdcff02fb8d4e857839e9fe0e4ab, type: 2}
+  - {fileID: 11400000, guid: 6326f36fccf872846851963869fbcaaa, type: 2}
+  - {fileID: 11400000, guid: 8ff8d15f4ffebf043887a5cc29896628, type: 2}
+  - {fileID: 11400000, guid: 51c70231ce28b6c45966530289749290, type: 2}
+  - {fileID: 11400000, guid: 6550ca035a35ce143a03f48ee6813d38, type: 2}
+  - {fileID: 11400000, guid: f689e21b0828b614f89dfffb426ad94a, type: 2}
+  - {fileID: 11400000, guid: b26ddfe7112693c4ca6fea84ace64499, type: 2}
+  - {fileID: 11400000, guid: 87fa5afd0744804478c94eb91880616f, type: 2}
+  - {fileID: 11400000, guid: 6033c55009d09d54eae3be8d5df55e0b, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  middleDensityObjectRadius: 28
+  lowDensityObjects:
+  - {fileID: 11400000, guid: 4b2776445db5433449c6abe1cc104019, type: 2}
+  - {fileID: 11400000, guid: c71c1b8e985cfb04ba597be64639faca, type: 2}
+  - {fileID: 11400000, guid: b3726d75f7fddba43ac1350973e7e496, type: 2}
+  - {fileID: 11400000, guid: 39b8409c64f55e642a1af919b3293937, type: 2}
+  - {fileID: 11400000, guid: 9fcc92c6e35bbda44a1e169769d974a8, type: 2}
+  - {fileID: 11400000, guid: 8bb1f4fb3857fda46bf5e6c0c48b5979, type: 2}
+  - {fileID: 11400000, guid: fd0ac0cba2639aa49a670990496fbe1a, type: 2}
+  - {fileID: 11400000, guid: 07a34e3c0fc85ad42af2677d87f3aaec, type: 2}
+  - {fileID: 11400000, guid: 88fd314d7e316de4ea095b394434310b, type: 2}
+  - {fileID: 11400000, guid: 0c08e9a360723874fbc862c8eef8a17e, type: 2}
+  - {fileID: 11400000, guid: 0c08e9a360723874fbc862c8eef8a17e, type: 2}
+  - {fileID: 11400000, guid: 0c08e9a360723874fbc862c8eef8a17e, type: 2}
+  - {fileID: 11400000, guid: 0c08e9a360723874fbc862c8eef8a17e, type: 2}
+  - {fileID: 11400000, guid: 0c08e9a360723874fbc862c8eef8a17e, type: 2}
+  lowDensityObjectRadius: 45

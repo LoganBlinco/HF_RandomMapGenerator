@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f1e1e4576d961449d9be437d370592, type: 3}
+  m_Name: AquaductStructure
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 11400000, guid: d5d01e04e831d374ebec9377305a4d5d, type: 2}
+  - {fileID: 11400000, guid: 74d314d00355ec740a27156da7111ce4, type: 2}
+  - {fileID: 11400000, guid: 7315d4731f5a75d45aad746b91a4ceb9, type: 2}
+  - {fileID: 11400000, guid: e2d8fc87261233943b8e1cb9bb210faf, type: 2}
+  - {fileID: 11400000, guid: 1c87d9ad471b52b42a585fdc72a98542, type: 2}
+  biomes: 0000000001000000
+  spawnProbability: 1
+  spawnWeight: 0.5
+  radiusToAffect: 0
+  maxAngle: 20
+  subStructures:
+  - {fileID: 11400000, guid: 24e04a74295694046b234bbce08a7d8a, type: 2}
+  - {fileID: 11400000, guid: 24e04a74295694046b234bbce08a7d8a, type: 2}
+  - {fileID: 11400000, guid: 24e04a74295694046b234bbce08a7d8a, type: 2}
+  - {fileID: 11400000, guid: 24e04a74295694046b234bbce08a7d8a, type: 2}

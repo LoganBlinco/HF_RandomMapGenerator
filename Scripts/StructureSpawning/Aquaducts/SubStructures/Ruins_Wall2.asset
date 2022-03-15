@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa24fcc7330b0a42b287b8c2a3c2a4d, type: 3}
+  m_Name: Ruins_Wall2
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1586250312766389413, guid: 848ffee187364804ab5096b276b9449e, type: 3}
+  radiusToAffect: 0
+  heightOffset: -3.48
+  spawnProbability: 1

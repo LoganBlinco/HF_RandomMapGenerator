@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272e174b53f76e643973a4a9e3d1cc42, type: 3}
+  m_Name: Test_Rocks
+  m_EditorClassIdentifier: 
+  spawnType: 1
+  primaryObjects:
+  - {fileID: 11400000, guid: 1a550ead90d3109429879046eaf90157, type: 2}
+  - {fileID: 11400000, guid: 5de8145418f60954d8f062f12c4a8a21, type: 2}
+  - {fileID: 11400000, guid: 654081371adbf874b8b2301f4aa6ac38, type: 2}
+  - {fileID: 11400000, guid: 5bcf31e6a89cd7a418c17d8d97794950, type: 2}
+  structureSpawnProbability: 1
+  structureSpawnWeight: 1
+  maxAngle: {x: 0, y: 90, z: 0}
+  minObjectsToSpawn: 3
+  maxObjectsToSpawn: 7
+  scatterRadius: 5
+  scatterSize: {x: 10, y: 10}

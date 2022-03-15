@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07814eb06ccb10f4785cadeb6609bb09, type: 3}
+  m_Name: Deadgrass
+  m_EditorClassIdentifier: 
+  DETAIL_MIN_WIDTH: 1
+  DETAIL_MAX_WIDTH: 1.2
+  DETAIL_MIN_HEIGHT: 0.4
+  DETAIL_MAX_HEIGHT: 0.5
+  DETAIL_NOISE_SPREAD: 10
+  DETAIL_HEALTHY_COLOR: {r: 0.6666667, g: 0.9137255, b: 0.23921569, a: 1}
+  DETAIL_DRY_COLOR: {r: 0.8039216, g: 0.9137255, b: 0.23921569, a: 1}
+  DETAIl_RENDER_MODE: 2
+  GRASS_TEXTURE: {fileID: 2800000, guid: 7604271c78e3ac846a1357b46456ab77, type: 3}
+  grassWeight: 0.4
+  noGrassChance: 0.596
+  maxGrassSpawnAngle: 13
+  onlyUseSteepness: 0

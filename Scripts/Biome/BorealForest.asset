@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06665874813b3ae41b8979b0b999a079, type: 3}
+  m_Name: BorealForest
+  m_EditorClassIdentifier: 
+  baseBiomeBlocks:
+  - {fileID: 11400000, guid: de22dd22bd271ba44bab20c7e3e3a211, type: 2}
+  baseDetails:
+  - {fileID: 11400000, guid: dba9051a07c23f94eb091a8dfbf13c9f, type: 2}
+  middleDensityObjects:
+  - {fileID: 11400000, guid: 8f92ee96202499746bd16183b2b50a2a, type: 2}
+  - {fileID: 11400000, guid: 8f92ee96202499746bd16183b2b50a2a, type: 2}
+  - {fileID: 11400000, guid: d719fd1542e8b11448edabc18226ece0, type: 2}
+  - {fileID: 11400000, guid: 2d01f7c401d0f1547a8071c2b9b69b71, type: 2}
+  - {fileID: 11400000, guid: d30f91c36abfd504eae865a13744798d, type: 2}
+  - {fileID: 11400000, guid: cefafa3ad54f52c44965b40820d1a0b4, type: 2}
+  - {fileID: 11400000, guid: 8d84b0f0386c7514c8db76e14cf6f0d8, type: 2}
+  - {fileID: 11400000, guid: 842a2409fc82ff44e9faa893d36e774d, type: 2}
+  - {fileID: 11400000, guid: 13f4769caaa3a2341a8b9d5a9b345bb7, type: 2}
+  - {fileID: 11400000, guid: 87fa5afd0744804478c94eb91880616f, type: 2}
+  - {fileID: 11400000, guid: 6033c55009d09d54eae3be8d5df55e0b, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 654081371adbf874b8b2301f4aa6ac38, type: 2}
+  - {fileID: 11400000, guid: 5bcf31e6a89cd7a418c17d8d97794950, type: 2}
+  middleDensityObjectRadius: 24
+  lowDensityObjects:
+  - {fileID: 11400000, guid: 17a897ad87cc0a243ad44f7b7199a5e2, type: 2}
+  lowDensityObjectRadius: 30

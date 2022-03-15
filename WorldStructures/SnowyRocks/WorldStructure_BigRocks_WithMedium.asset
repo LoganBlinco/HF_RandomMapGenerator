@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272e174b53f76e643973a4a9e3d1cc42, type: 3}
+  m_Name: WorldStructure_BigRocks_WithMedium
+  m_EditorClassIdentifier: 
+  spawnType: 0
+  primaryObjects:
+  - {fileID: 11400000, guid: b304c03c2db44e04ca8de7ace923fb2f, type: 2}
+  - {fileID: 11400000, guid: 11e236a54a9e7af488432364cb82aa43, type: 2}
+  - {fileID: 11400000, guid: e2457deb0daa3674ab44ea4fb1841130, type: 2}
+  - {fileID: 11400000, guid: d508c42291d3a624f9deb4c641c0041d, type: 2}
+  - {fileID: 11400000, guid: 0f1408074746de449a30e5ceaabbc87e, type: 2}
+  - {fileID: 11400000, guid: 39f0b07683eae4c47b0097484770c91c, type: 2}
+  - {fileID: 11400000, guid: 8f19cbc50c4315247804668c5e7bfbf8, type: 2}
+  - {fileID: 11400000, guid: 8c1556422f5e2e846a99f4f3460d217d, type: 2}
+  - {fileID: 11400000, guid: 5a67881eec66322419d802714fe06a87, type: 2}
+  - {fileID: 11400000, guid: fc253f0dc4ff9c54f8f038ea9b488765, type: 2}
+  - {fileID: 11400000, guid: 5b5acc49e73b4e84eae577d4964fc6f4, type: 2}
+  - {fileID: 11400000, guid: e597f30c69b9f834e83f6ff18f3faf50, type: 2}
+  - {fileID: 11400000, guid: 709530b9ed809444c8c8ab9ae6e701eb, type: 2}
+  - {fileID: 11400000, guid: 8b497fd19481b574d8fd87362a8eb51a, type: 2}
+  - {fileID: 11400000, guid: e2c7cea9032d06b408f59f516e78f9c4, type: 2}
+  - {fileID: 11400000, guid: 8e98b7390aa66b9428e93be73f5e4c7d, type: 2}
+  - {fileID: 11400000, guid: c10ec202fcf01f740b153fb83c094d1e, type: 2}
+  - {fileID: 11400000, guid: 19e57b5565d526f4499ca1d5614302c3, type: 2}
+  - {fileID: 11400000, guid: 1031246b95cfabf448c8eb09a8e4118a, type: 2}
+  - {fileID: 11400000, guid: bade3a8da78d3164cabf7c941e3a2742, type: 2}
+  - {fileID: 11400000, guid: 6fb622a5713a5ef46b996a69e915d2b5, type: 2}
+  - {fileID: 11400000, guid: 7eb6a9f703bbd3d4a9df486954edbe0a, type: 2}
+  structureSpawnProbability: 0.46
+  structureSpawnWeight: 0.28
+  maxAngle: {x: 0, y: 90, z: 0}
+  minObjectsToSpawn: 3
+  maxObjectsToSpawn: 8
+  scatterRadius: 5
+  scatterSize: {x: 10, y: 10}
+  perpendicular_AngleVariance: 15
+  perpendicular_MinDistanceToSpawn: 1.5
+  perpendicular_MaxDistanceToSpawn: 7
+  subStructure: {fileID: 0}
+  subStructure_spawnFrom: 0

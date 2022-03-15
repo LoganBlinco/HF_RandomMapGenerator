@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f1e1e4576d961449d9be437d370592, type: 3}
+  m_Name: SnowRockGroup
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 11400000, guid: bd34ffeb9391db24a81d65765634493c, type: 2}
+  - {fileID: 11400000, guid: 1af96cb42803dbc4aaf5a19d15ba22c2, type: 2}
+  - {fileID: 11400000, guid: 1af96cb42803dbc4aaf5a19d15ba22c2, type: 2}
+  - {fileID: 11400000, guid: a92bfefd3b8a1444fa65dd9b9b854089, type: 2}
+  - {fileID: 11400000, guid: a92bfefd3b8a1444fa65dd9b9b854089, type: 2}
+  - {fileID: 11400000, guid: ce8b2b27f5927544e9cc1a287fe5ef25, type: 2}
+  - {fileID: 11400000, guid: 6c7b1676ca82a4f43af5d128d845c74d, type: 2}
+  - {fileID: 11400000, guid: 0a01130f98757bb439511ada77c7c1cf, type: 2}
+  - {fileID: 11400000, guid: d699e34cf0ef4c74b9e89113fa31aab3, type: 2}
+  - {fileID: 11400000, guid: ab6296c603367d1488e8771f8a865803, type: 2}
+  - {fileID: 11400000, guid: 2815d858ad520dd47b81f25cf170884b, type: 2}
+  - {fileID: 11400000, guid: e764c091289e6074bab7577d0c766c78, type: 2}
+  - {fileID: 11400000, guid: 223bcb0c3b485e34dabedb4eca01a1f0, type: 2}
+  - {fileID: 11400000, guid: f70bfa32dfbc42b4dbbd2465ff41e100, type: 2}
+  - {fileID: 11400000, guid: bdc3e27bd004b9b43bd3ec398bcb87f6, type: 2}
+  - {fileID: 11400000, guid: d8baa63c5d8ad444c9ca420e5a534443, type: 2}
+  - {fileID: 11400000, guid: 1ce144e38c7ba3a4195ad67a9995ee91, type: 2}
+  biomes: 060000000800000007000000
+  spawnProbability: 1
+  spawnWeight: 0.5
+  radiusToAffect: 0
+  maxAngle: 15
+  subStructures: []

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522f705007d5f164b94f6833c260fe47, type: 3}
+  m_Name: NA_ArtySettings
+  m_EditorClassIdentifier: 
+  BaseTerrainSettings: {fileID: 11400000, guid: cce9dfacb4fdc9c47b2130cae0c27e3b,
+    type: 2}
+  BorealForest: {fileID: 11400000, guid: 9a24ac7bfaeea5547ad34d09c731feb6, type: 2}
+  Desert: {fileID: 11400000, guid: 1418ec2d10904e04dabac059b5a80315, type: 2}
+  GrassLand: {fileID: 11400000, guid: f1c14daacea3e4a46a0ed625b1ee5ead, type: 2}
+  Ice: {fileID: 11400000, guid: a125ff357f07d6c409a3f014b26c0a61, type: 2}
+  RainForest: {fileID: 11400000, guid: 5af76e737a0c9b04b871e6eb9baa8497, type: 2}
+  Savanna: {fileID: 11400000, guid: b0722865a553f7e428d41957bb45d1a9, type: 2}
+  SeasonalForest: {fileID: 11400000, guid: d604a8fe68f1def45be67b281b483c77, type: 2}
+  Tundra: {fileID: 11400000, guid: 74ae4c2da5c30e54fa67d685297f423a, type: 2}
+  Woodland: {fileID: 11400000, guid: 30fca9ccdb85d2d4aa05a0970c0bd065, type: 2}

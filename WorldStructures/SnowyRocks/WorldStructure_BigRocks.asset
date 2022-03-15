@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272e174b53f76e643973a4a9e3d1cc42, type: 3}
+  m_Name: WorldStructure_BigRocks
+  m_EditorClassIdentifier: 
+  spawnType: 0
+  primaryObjects:
+  - {fileID: 11400000, guid: b304c03c2db44e04ca8de7ace923fb2f, type: 2}
+  - {fileID: 11400000, guid: 11e236a54a9e7af488432364cb82aa43, type: 2}
+  - {fileID: 11400000, guid: e2457deb0daa3674ab44ea4fb1841130, type: 2}
+  - {fileID: 11400000, guid: d508c42291d3a624f9deb4c641c0041d, type: 2}
+  - {fileID: 11400000, guid: 0f1408074746de449a30e5ceaabbc87e, type: 2}
+  - {fileID: 11400000, guid: 39f0b07683eae4c47b0097484770c91c, type: 2}
+  - {fileID: 11400000, guid: 8f19cbc50c4315247804668c5e7bfbf8, type: 2}
+  - {fileID: 11400000, guid: 8c1556422f5e2e846a99f4f3460d217d, type: 2}
+  - {fileID: 11400000, guid: 5a67881eec66322419d802714fe06a87, type: 2}
+  - {fileID: 11400000, guid: fc253f0dc4ff9c54f8f038ea9b488765, type: 2}
+  structureSpawnProbability: 0.645
+  structureSpawnWeight: 0.522
+  maxAngle: {x: 0, y: 90, z: 0}
+  minObjectsToSpawn: 4
+  maxObjectsToSpawn: 7
+  scatterRadius: 5
+  scatterSize: {x: 10, y: 10}
+  perpendicular_AngleVariance: 15
+  perpendicular_MinDistanceToSpawn: 1.5
+  perpendicular_MaxDistanceToSpawn: 7
+  subStructure: {fileID: 0}
+  subStructure_spawnFrom: 0

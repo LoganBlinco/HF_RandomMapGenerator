@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522f705007d5f164b94f6833c260fe47, type: 3}
+  m_Name: EU_RifleSettings
+  m_EditorClassIdentifier: 
+  BorealForest: {fileID: 11400000, guid: 6651c7f87f4b98e4d8f2d47f3423904c, type: 2}
+  Desert: {fileID: 11400000, guid: 3eb0ccd236112254dbe3a08f913b8d01, type: 2}
+  GrassLand: {fileID: 11400000, guid: ed88b63f59bc0e84a90ee99e403a9bc6, type: 2}
+  Ice: {fileID: 11400000, guid: 91d0e4bca5997154a839e7c77de0e463, type: 2}
+  RainForest: {fileID: 11400000, guid: d4203eb5739cd5b42b06dcdc4fc08441, type: 2}
+  Savanna: {fileID: 11400000, guid: e64fab136e7245348b9b22c24801b6d2, type: 2}
+  SeasonalForest: {fileID: 11400000, guid: 81c70c27caf576d4596c128dd31fa8a0, type: 2}
+  Tundra: {fileID: 11400000, guid: 61cb233d12f77a34b81ca5ee5151b90e, type: 2}
+  Woodland: {fileID: 11400000, guid: 81c6c23537def164991087446cefd6b4, type: 2}

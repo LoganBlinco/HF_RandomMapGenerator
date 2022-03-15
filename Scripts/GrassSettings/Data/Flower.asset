@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07814eb06ccb10f4785cadeb6609bb09, type: 3}
+  m_Name: Flower
+  m_EditorClassIdentifier: 
+  DETAIL_MIN_WIDTH: 1
+  DETAIL_MAX_WIDTH: 1.2
+  DETAIL_MIN_HEIGHT: 0.4
+  DETAIL_MAX_HEIGHT: 0.77
+  DETAIL_NOISE_SPREAD: 10
+  DETAIL_HEALTHY_COLOR: {r: 0.23137255, g: 0.4509804, b: 0.105882354, a: 1}
+  DETAIL_DRY_COLOR: {r: 0.41960785, g: 0.81960785, b: 0.29803923, a: 1}
+  DETAIl_RENDER_MODE: 2
+  GRASS_TEXTURE: {fileID: 2800000, guid: 7cef10b449f17494fafb7bf46344158d, type: 3}
+  grassWeight: 0.6
+  noGrassChance: 0.385
+  maxGrassSpawnAngle: 10
+  onlyUseSteepness: 0

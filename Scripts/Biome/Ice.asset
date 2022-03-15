@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06665874813b3ae41b8979b0b999a079, type: 3}
+  m_Name: Ice
+  m_EditorClassIdentifier: 
+  baseBiomeBlocks:
+  - {fileID: 11400000, guid: 2bd4d5cdc6c76c348905130b26dbedfa, type: 2}
+  baseDetails: []
+  middleDensityObjects:
+  - {fileID: 11400000, guid: 6550ca035a35ce143a03f48ee6813d38, type: 2}
+  middleDensityObjectRadius: 32
+  lowDensityObjects:
+  - {fileID: 11400000, guid: 297f6f06b0441b14f9f8090d64b1f209, type: 2}
+  - {fileID: 11400000, guid: bf3bb5b513f6f3f4faaad83faa3a5580, type: 2}
+  lowDensityObjectRadius: 80

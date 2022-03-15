@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06665874813b3ae41b8979b0b999a079, type: 3}
+  m_Name: Savanna
+  m_EditorClassIdentifier: 
+  baseBiomeBlocks:
+  - {fileID: 11400000, guid: f177e70bcfc51d04185fdfe8859aeaa1, type: 2}
+  baseDetails:
+  - {fileID: 11400000, guid: 2905270048f648d4e956d1318811d303, type: 2}
+  - {fileID: 11400000, guid: a7a841fd64fb2be47bae5a5aedb1b598, type: 2}
+  middleDensityObjects:
+  - {fileID: 11400000, guid: 5de8145418f60954d8f062f12c4a8a21, type: 2}
+  - {fileID: 11400000, guid: 1a550ead90d3109429879046eaf90157, type: 2}
+  - {fileID: 11400000, guid: b4c089c7d879a5d4a85f16437390b343, type: 2}
+  - {fileID: 11400000, guid: bac843db93d6ddd4bbc322076aa0d060, type: 2}
+  - {fileID: 11400000, guid: 9bc74793f4c96794682ed71414205cf0, type: 2}
+  - {fileID: 11400000, guid: a7b7a254677e7034891758a5644a2082, type: 2}
+  - {fileID: 11400000, guid: 644c7ef8ac0e2c14a9be4f9895434572, type: 2}
+  middleDensityObjectRadius: 22

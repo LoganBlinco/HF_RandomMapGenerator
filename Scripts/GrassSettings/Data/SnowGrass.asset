@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07814eb06ccb10f4785cadeb6609bb09, type: 3}
+  m_Name: SnowGrass
+  m_EditorClassIdentifier: 
+  DETAIL_MIN_WIDTH: 1
+  DETAIL_MAX_WIDTH: 1.2
+  DETAIL_MIN_HEIGHT: 0.4
+  DETAIL_MAX_HEIGHT: 0.5
+  DETAIL_NOISE_SPREAD: 10
+  DETAIL_HEALTHY_COLOR: {r: 0.9607843, g: 0.9647059, b: 0.9254902, a: 1}
+  DETAIL_DRY_COLOR: {r: 0.8980392, g: 0.9019608, b: 0.85882354, a: 1}
+  DETAIl_RENDER_MODE: 2
+  GRASS_TEXTURE: {fileID: 2800000, guid: d081fb145047b2a44b24dac803d0e05e, type: 3}
+  grassWeight: 0.8
+  noGrassChance: 0.616
+  maxGrassSpawnAngle: 13
+  onlyUseSteepness: 0

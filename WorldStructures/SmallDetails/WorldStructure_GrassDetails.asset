@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272e174b53f76e643973a4a9e3d1cc42, type: 3}
+  m_Name: WorldStructure_GrassDetails
+  m_EditorClassIdentifier: 
+  spawnType: 2
+  primaryObjects:
+  - {fileID: 11400000, guid: 87fa5afd0744804478c94eb91880616f, type: 2}
+  - {fileID: 11400000, guid: 6033c55009d09d54eae3be8d5df55e0b, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  structureSpawnProbability: 1
+  structureSpawnWeight: 1
+  maxAngle: {x: 0, y: 90, z: 0}
+  minObjectsToSpawn: 1
+  maxObjectsToSpawn: 6
+  scatterRadius: 5
+  scatterSize: {x: 10, y: 10}
+  perpendicular_AngleVariance: 15
+  perpendicular_MinDistanceToSpawn: 4
+  perpendicular_MaxDistanceToSpawn: 12
+  subStructure: {fileID: 0}
+  subStructure_spawnFrom: 0

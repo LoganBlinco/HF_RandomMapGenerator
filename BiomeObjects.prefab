@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4305987313529872496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4305987313529872497}
+  - component: {fileID: 4305987313529872498}
+  m_Layer: 0
+  m_Name: BiomeObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4305987313529872497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4305987313529872496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4305987313529872498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4305987313529872496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a06a13353bd7a540b8e05d3e70f14be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DesertRadius: 17.78
+  SavannaRadius: 20
+  GrasslandRadius: 20
+  WoodlandRadius: 20
+  SeasonalForestRadius: 20
+  RainforestRadius: 20
+  BorealForestRadius: 20
+  TundraRadius: 20
+  IceRadius: 20
+  DesertBasedObjects:
+  - {fileID: 11400000, guid: ff022cfd2eefb97488dc8a6864034915, type: 2}
+  - {fileID: 11400000, guid: 1f4e08ee3eaaedf43bb2e30b5816cf87, type: 2}
+  - {fileID: 11400000, guid: d87eb3e4474e43e4f8ae9100f4ea7cc0, type: 2}
+  - {fileID: 11400000, guid: 43b3f222150349e4d98c07434d439eb2, type: 2}
+  - {fileID: 11400000, guid: 6be7512408d7d9840bf31e9ecc8527e6, type: 2}
+  - {fileID: 11400000, guid: 05b0785cc23916c458608c08e9f28351, type: 2}
+  - {fileID: 11400000, guid: 36ec60ab4c9036246be97adbca60efff, type: 2}
+  - {fileID: 11400000, guid: ac639df850792f14184edbb217281deb, type: 2}
+  - {fileID: 11400000, guid: 223203c125fda214cb082940ae82bc25, type: 2}
+  - {fileID: 11400000, guid: 19d9c88937e61744cbd47a1c103e9e07, type: 2}
+  - {fileID: 11400000, guid: 8d42156f5a8cede4d950b476e5aae39d, type: 2}
+  GrassBasedObjects:
+  - {fileID: 11400000, guid: 02e0313d2decafe4c8715d20a14c8003, type: 2}
+  - {fileID: 11400000, guid: 9eaf369f04e673142be07ffbc497a365, type: 2}
+  - {fileID: 11400000, guid: 6bd7b7b89ac3b054fb6725590460b937, type: 2}
+  - {fileID: 11400000, guid: 310a906160220df47a4c39ae02b865f7, type: 2}
+  - {fileID: 11400000, guid: c1e6ac149547d8a4099342ec6af02ac4, type: 2}
+  - {fileID: 11400000, guid: 021f23b807d23f14893a112325a3d5a1, type: 2}
+  - {fileID: 11400000, guid: 9b01d588fb1e5444f95986e2b35227a7, type: 2}
+  - {fileID: 11400000, guid: 38bb7bff9d1f3f443ba18aa844dc0651, type: 2}
+  - {fileID: 11400000, guid: 4c3f45a5653ad314e9da7a09c125227e, type: 2}
+  - {fileID: 11400000, guid: bfdef53114962024cbd35906f1ee561f, type: 2}
+  SnowBasedObjects:
+  - {fileID: 11400000, guid: 5f17b1ee46e9e61468134136a1f9da6c, type: 2}
+  - {fileID: 11400000, guid: 5c140c49ecc674a47a17f4606296b860, type: 2}
+  - {fileID: 11400000, guid: 4eae31b93d793d34999815cb35b66742, type: 2}
+  - {fileID: 11400000, guid: 73760c6f8fc470a47af259f9735edeb2, type: 2}
+  - {fileID: 11400000, guid: e1584b0d906a646439b38aa2d709e256, type: 2}
+  - {fileID: 11400000, guid: 491dfe99b52babf4ba4026164724657f, type: 2}
+  - {fileID: 11400000, guid: 02c6c3c45101a5b4db7bc30d589565df, type: 2}
+  - {fileID: 11400000, guid: 8638ac9638c583d4a9ec412a60ae79f8, type: 2}
+  - {fileID: 11400000, guid: 7fdd40221a5f8e74391c4d5b614081b9, type: 2}
+  - {fileID: 11400000, guid: 25935216e74297f4bb4db910fcf71099, type: 2}
