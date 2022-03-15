@@ -153,7 +153,6 @@ public class Generator : MonoBehaviour
 			Debug.Log("creating biomeobjectspawner");
 			gameObject.AddComponent<BiomeObjectSpawner>();
 		}
-		BiomeObjectSpawner.Instance.Initialize();
 
 		if (StructureSpawner.Instance == null)
 		{

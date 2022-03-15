@@ -47,7 +47,6 @@ public class StructureSpawner : MonoBehaviour
 
 	private void DestroyPreviousChildren()
 	{
-		Transform parant = transform;
 		Transform[] children = (Transform[])GetComponentsInChildren<Transform>();
 		foreach (Transform tmp in children)
 		{
@@ -83,8 +82,6 @@ public class StructureSpawner : MonoBehaviour
 	private Vector2 HandleLineSpawn(WorldStructure structureToSpawn, Vector2 initialPoint, int mapResolution, TerrainData terrainData, 
 		int mapSize,Vector2 directionToSpawn, int amountToSpawn, GameObject parantObject)
 	{
-		float maxAngle = structureToSpawn.maxAngle.y;
-
 		int amountOfPrimaryObjects = structureToSpawn.primaryObjects.Count;
 
 		Vector2 workingPoint = new Vector2(initialPoint.x, initialPoint.y);
@@ -95,19 +92,11 @@ public class StructureSpawner : MonoBehaviour
 			objectToSpawn = structureToSpawn.primaryObjects[Random.Range(0, amountOfPrimaryObjects)];
 
 			targetPos = new Vector3(workingPoint.x, 0, workingPoint.y);
-			targetPos += objectToSpawn.heightOffset;
 			targetPos += terrainData.GetInterpolatedHeight(workingPoint.x / mapResolution, workingPoint.y / mapResolution) * Vector3.up;
 
 			float y_01 = (float)workingPoint.y / (float)terrainData.alphamapHeight;
 			float x_01 = (float)workingPoint.x / (float)terrainData.alphamapWidth;
 			float angle = terrainData.GetSteepness(y_01, x_01);
-
-			if (angle > maxAngle) { continue; }
-
-			if (Random.Range(0f, 1f) > objectToSpawn.spawnProbability) { continue; }
-
-			//wobble amount
-
 
 			float objectSize = objectToSpawn.approxSize.x;
 
@@ -121,7 +110,7 @@ public class StructureSpawner : MonoBehaviour
 
 			if (ValidPoint(workingPoint, mapSize))
 			{
-				var tmp = SpawnObjectLookTowards(objectToSpawn.objectPrefab, targetPos, lookAngle, parantObject.transform, objectToSpawn.pivotFix);
+				objectToSpawn.CreateMeLookAt(targetPos, lookAngle, parantObject.transform, angle);
 			}
 		}
 		targetPos.x += directionToSpawn.x * objectToSpawn.approxSize.x;
@@ -169,26 +158,6 @@ public class StructureSpawner : MonoBehaviour
 		return true;
 	}
 
-	private GameObject SpawnObjectLookTowards(GameObject objectToSpawn, Vector3 targetPos, Vector3 lookAngle, Transform parant,Vector3 pivotFix)
-	{
-		Quaternion spawnAngle = Quaternion.identity;
-		GameObject spawnedObj = Instantiate(objectToSpawn, targetPos, spawnAngle, parant);
-		spawnedObj.transform.LookAt(lookAngle);
-		spawnedObj.transform.Rotate(pivotFix);
-		return spawnedObj;
-	}
-
-	private void NewSpawnObjectSnap(GameObject objectToSpawn, Vector3 targetPos, Vector3 normal, Transform parant,
-		float randomYAngle)
-	{
-		Quaternion spawnAngle = Quaternion.identity;
-		GameObject spawnedObj = Instantiate(objectToSpawn, targetPos, spawnAngle, parant);
-		spawnedObj.transform.up = normal;
-
-		spawnedObj.transform.Rotate(new Vector3(0, randomYAngle));
-	}
-
-
 	private void SpawnObjectOnTerrainSnap(WorldObject objectToSpawn, Vector2 workingPoint,
 		int mapSize, int mapResolution, TerrainData terrainData,GameObject parantObject)
 	{
@@ -196,7 +165,6 @@ public class StructureSpawner : MonoBehaviour
 		//HANDLE PHYSCIALLY SPAWNING
 
 		Vector3 targetPos = new Vector3(workingPoint.x, 0, workingPoint.y);
-		targetPos += objectToSpawn.heightOffset;
 		targetPos += terrainData.GetInterpolatedHeight(workingPoint.x / mapResolution, workingPoint.y / mapResolution) * Vector3.up;
 
 		float y_01 = (float)workingPoint.y / (float)terrainData.alphamapHeight;
@@ -204,17 +172,9 @@ public class StructureSpawner : MonoBehaviour
 		float angle = terrainData.GetSteepness(y_01, x_01);
 		Vector3 normal = terrainData.GetInterpolatedNormal(workingPoint.x / mapResolution, workingPoint.y / mapResolution);
 
-		if (angle > objectToSpawn.maxAngle.y) { return; }
-
-		if (Random.Range(0f, 1f) > objectToSpawn.spawnProbability) { return; }
-
-
-		float randomAngle = Random.Range(0, objectToSpawn.yAxisRotationRandomness);
-
-
 		if (ValidPoint(workingPoint, mapSize))
 		{
-			NewSpawnObjectSnap(objectToSpawn.objectPrefab, targetPos, normal, parantObject.transform, randomAngle);
+			objectToSpawn.CreateMeSnap(targetPos, normal, parantObject.transform, "", angle);
 		}
 	}
 
@@ -368,20 +328,14 @@ public class StructureSpawner : MonoBehaviour
 			float x_01 = (float)currentPoint.x / (float)terrainData.alphamapWidth;
 			float angle = terrainData.GetSteepness(y_01, x_01);
 
-			if (angle > objectToSpawn.maxAngle.y) { continue; }
-
-			//Spawn chance.
-			if (Random.Range(0f, 1f) > objectToSpawn.spawnProbability) { continue; }
-
-
 			float height = terrainData.GetInterpolatedHeight(currentPoint.x / mapResolution, currentPoint.y / mapResolution);
 			//Spawn the object in correct position.
-			Vector3 targetPosition = new Vector3(currentPoint.x, height, currentPoint.y) + objectToSpawn.heightOffset;
+			Vector3 targetPosition = new Vector3(currentPoint.x, height, currentPoint.y);
 			Vector3 normal = terrainData.GetInterpolatedNormal(currentPoint.x / mapResolution, currentPoint.y / mapResolution);
 
 			if (ValidPoint(currentPoint, mapSize))
 			{
-				NewSpawnObjectSnap(objectToSpawn.objectPrefab, targetPosition, normal, parantObject.transform,0);
+				objectToSpawn.CreateMeSnap(targetPosition, normal, parantObject.transform, "", angle);
 			}
 		}
 	}
