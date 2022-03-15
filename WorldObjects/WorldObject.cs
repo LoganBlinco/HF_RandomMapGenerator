@@ -37,16 +37,18 @@ public class WorldObject : ScriptableObject
 	[SerializeField]
 	private float yAxisRotationRandomness = 359f;
 
+	//METHODS
 
-	public void CreateMeSnap(Vector3 targetPosition, Vector3 normal,Transform parantObject, string biomeName, float angle)
+	public void CreateMeSnapInternal(Vector3 targetPosition, Transform parantObject, string biomeName, TerrainData terrainData)
 	{
+		float angle = StructureSpawner.getSteepnessValue(terrainData, targetPosition);
 		if (!spawnCheck(angle)) { return; }
 
 		var spawnedObj = createObject(targetPosition, Quaternion.identity, parantObject);
 		spawnedObj.name = biomeName + ": " + spawnedObj.name;
 		if (snapYRotation)
 		{
-			spawnedObj.transform.up = normal;
+			spawnedObj.transform.up = StructureSpawner.getNormalValue(terrainData, targetPosition);
 		}
 		spawnedObj.transform.Rotate(pivotFix);
 		float randomAngle = Random.Range(0, yAxisRotationRandomness);

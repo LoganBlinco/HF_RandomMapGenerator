@@ -93,10 +93,9 @@ public class StructureSpawner : MonoBehaviour
 
 			targetPos = new Vector3(workingPoint.x, 0, workingPoint.y);
 			targetPos += terrainData.GetInterpolatedHeight(workingPoint.x / mapResolution, workingPoint.y / mapResolution) * Vector3.up;
-
-			float y_01 = (float)workingPoint.y / (float)terrainData.alphamapHeight;
-			float x_01 = (float)workingPoint.x / (float)terrainData.alphamapWidth;
-			float angle = terrainData.GetSteepness(y_01, x_01);
+			
+			
+			float angle = getSteepnessValue(terrainData, workingPoint);
 
 			float objectSize = objectToSpawn.approxSize.x;
 
@@ -162,19 +161,13 @@ public class StructureSpawner : MonoBehaviour
 		int mapSize, int mapResolution, TerrainData terrainData,GameObject parantObject)
 	{
 
-		//HANDLE PHYSCIALLY SPAWNING
-
-		Vector3 targetPos = new Vector3(workingPoint.x, 0, workingPoint.y);
-		targetPos += terrainData.GetInterpolatedHeight(workingPoint.x / mapResolution, workingPoint.y / mapResolution) * Vector3.up;
-
-		float y_01 = (float)workingPoint.y / (float)terrainData.alphamapHeight;
-		float x_01 = (float)workingPoint.x / (float)terrainData.alphamapWidth;
-		float angle = terrainData.GetSteepness(y_01, x_01);
-		Vector3 normal = terrainData.GetInterpolatedNormal(workingPoint.x / mapResolution, workingPoint.y / mapResolution);
+		Vector3 targetPos = new Vector3(workingPoint.x,
+			terrainData.GetInterpolatedHeight(workingPoint.x / mapResolution, workingPoint.y / mapResolution), 
+			workingPoint.y);
 
 		if (ValidPoint(workingPoint, mapSize))
 		{
-			objectToSpawn.CreateMeSnap(targetPos, normal, parantObject.transform, "", angle);
+			objectToSpawn.CreateMeSnapInternal(targetPos, parantObject.transform, "", terrainData);
 		}
 	}
 
@@ -201,7 +194,8 @@ public class StructureSpawner : MonoBehaviour
 			if (structureToSpawn == null) { Debug.Log(string.Format("Biome: {0} returned null.", biomeToSpawn)); continue; }
 
 			//Is angle valid?
-			Vector3 normal = terrainData.GetInterpolatedNormal(workingPoint.x / mapResolution, workingPoint.y / mapResolution);
+			//Vector3 normal = terrainData.GetInterpolatedNormal(workingPoint.x / mapResolution, workingPoint.y / mapResolution);
+			Vector3 normal = getNormalValue(terrainData, workingPoint);
 			float angle = Vector3.Angle(normal, Vector3.up);
 			if (angle > structureToSpawn.maxAngle.y) { continue; }//TODO : implement more than just up
 
@@ -324,18 +318,12 @@ public class StructureSpawner : MonoBehaviour
 
 			WorldObject objectToSpawn = structureToSpawn.primaryObjects[Random.Range(0, amountOfPrimaryObjects)];
 
-			float y_01 = (float)currentPoint.y / (float)terrainData.alphamapHeight;
-			float x_01 = (float)currentPoint.x / (float)terrainData.alphamapWidth;
-			float angle = terrainData.GetSteepness(y_01, x_01);
-
 			float height = terrainData.GetInterpolatedHeight(currentPoint.x / mapResolution, currentPoint.y / mapResolution);
-			//Spawn the object in correct position.
 			Vector3 targetPosition = new Vector3(currentPoint.x, height, currentPoint.y);
-			Vector3 normal = terrainData.GetInterpolatedNormal(currentPoint.x / mapResolution, currentPoint.y / mapResolution);
 
 			if (ValidPoint(currentPoint, mapSize))
 			{
-				objectToSpawn.CreateMeSnap(targetPosition, normal, parantObject.transform, "", angle);
+				objectToSpawn.CreateMeSnapInternal(targetPosition, parantObject.transform, "", terrainData);
 			}
 		}
 	}
@@ -351,5 +339,38 @@ public class StructureSpawner : MonoBehaviour
 			BiomeObj bOb = BiomeManager.Instance.biomeMapping[b.ToString()];
 			AltSpawnObject(bOb, mapResolution, Tiles, terrainData, mapSize);
 		}
+	}
+
+
+	// PRIVATE METHODS
+
+
+	public static float getSteepnessValue(TerrainData terrainData, Vector2 workingPoint)
+	{
+		float y_01 = (float)workingPoint.y / (float)terrainData.heightmapResolution;
+		float x_01 = (float)workingPoint.x / (float)terrainData.heightmapResolution;
+		return terrainData.GetSteepness(y_01, x_01);
+
+	}
+
+	public static float getSteepnessValue(TerrainData terrainData, Vector3 workingPoint)
+	{
+		float y_01 = (float)workingPoint.z / (float)terrainData.heightmapResolution;
+		float x_01 = (float)workingPoint.x / (float)terrainData.heightmapResolution;
+		return terrainData.GetSteepness(y_01, x_01);
+
+	}
+
+
+	public static Vector3 getNormalValue(TerrainData terrainData, Vector2 workingPoint)
+	{
+		int heightMapResolution = terrainData.heightmapResolution;
+		return terrainData.GetInterpolatedNormal(workingPoint.x / heightMapResolution, workingPoint.y / heightMapResolution);
+	}
+
+	public static Vector3 getNormalValue(TerrainData terrainData, Vector3 workingPoint)
+	{
+		int heightMapResolution = terrainData.heightmapResolution;
+		return terrainData.GetInterpolatedNormal(workingPoint.x / heightMapResolution, workingPoint.z / heightMapResolution);
 	}
 }

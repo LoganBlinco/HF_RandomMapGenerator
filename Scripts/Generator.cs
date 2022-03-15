@@ -505,8 +505,11 @@ public class Generator : MonoBehaviour
 		int rockIndex = sIndex;
 
 		// Normalise x/y coordinates to range 0-1 
-		float y_01 = (float)y / (float)terrainData.alphamapHeight;
-		float x_01 = (float)x / (float)terrainData.alphamapWidth;
+		//float y_01 = (float)y / (float)terrainData.alphamapHeight;
+		//float x_01 = (float)x / (float)terrainData.alphamapWidth;
+
+		float y_01 = (float)y / (float)terrainData.alphamapResolution;
+		float x_01 = (float)x / (float)terrainData.alphamapResolution;
 
 		// Calculate the steepness of the terrain
 		float steepness = terrainData.GetSteepness(y_01, x_01);

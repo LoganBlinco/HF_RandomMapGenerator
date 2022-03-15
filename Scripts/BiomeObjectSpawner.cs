@@ -71,16 +71,12 @@ public class BiomeObjectSpawner : MonoBehaviour
 			WorldObject objectToSpawn = biomeToSpawn.GetObjectToSpawn();
 			if (objectToSpawn == null) { Debug.Log(string.Format("Biome: {0} returned null.", biomeToSpawn)); continue; }
 
-			//Is angle valid?
-			Vector3 normal =  terrainData.GetInterpolatedNormal(workingPoint.x / mapResolution, workingPoint.y / mapResolution);
-			float angle = Vector3.Angle(normal, Vector3.up);
-
+			//Then get infomation for the point
 			float height = terrainData.GetInterpolatedHeight(workingPoint.x / mapResolution, workingPoint.y / mapResolution);
-			//Spawn the object in correct position.
 			Vector3 targetPosition = new Vector3(workingPoint.x, height, workingPoint.y);
 
-			objectToSpawn.CreateMeSnap(targetPosition, normal, transform, biomeToSpawn.getName(), angle);
-
+			//Spawn object.
+			objectToSpawn.CreateMeSnapInternal(targetPosition, transform, biomeToSpawn.getName(), terrainData);
 		}
 	}
 
