@@ -19,31 +19,11 @@ public class StructureSpawner : MonoBehaviour
 		}
 	}
 
-	public List<Structures> structures = new List<Structures>();
-	public Dictionary<string, List<Structures>> biomeToStructures;
-	public Dictionary<string, float> biomeToWeight;
-
 
 
 	//Non-changable values
 	private const int REJECTION_SAMPLES = 30;
 	public float radiusBetweenStructures = 80;
-
-
-	public void Initialize()
-	{
-		biomeToStructures = new Dictionary<string, List<Structures>>();
-		biomeToWeight = new Dictionary<string, float>();
-
-
-		BiomeType[] enumArray = (BiomeType[])System.Enum.GetValues(typeof(BiomeType));
-		foreach (BiomeType b in enumArray)
-		{
-			biomeToStructures[b.ToString()] = new List<Structures>();
-			biomeToWeight[b.ToString()] = 0;
-		}
-		PopulateDictionaries();
-	}
 
 	public struct returnData
 	{
@@ -83,28 +63,6 @@ public class StructureSpawner : MonoBehaviour
 			}
 		}
 	}
-
-
-
-
-
-	private void PopulateDictionaries()
-	{
-		foreach (Structures config in structures)
-		{
-			foreach (BiomeType b in config.biomes)
-			{
-				biomeToStructures[b.ToString()].Add(config);
-				biomeToWeight[b.ToString()] = biomeToWeight[b.ToString()] + config.spawnWeight;
-			}
-		}
-	}
-
-
-
-
-
-
 
 
 	//NEW STUFF

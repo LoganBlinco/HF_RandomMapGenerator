@@ -160,7 +160,6 @@ public class Generator : MonoBehaviour
 			Debug.Log("creating strcuturespawner");
 			gameObject.AddComponent<StructureSpawner>();
 		}
-		StructureSpawner.Instance.Initialize();
 	}
 	public void Run_RandomSeed()
 	{

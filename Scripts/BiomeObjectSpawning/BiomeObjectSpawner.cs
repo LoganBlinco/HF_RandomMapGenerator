@@ -29,12 +29,6 @@ public class BiomeObjectSpawner : MonoBehaviour
 	public float IceRadius = 20;
 
 
-	public List<BiomeObjectConfig> DesertBasedObjects = new List<BiomeObjectConfig>();
-	public List<BiomeObjectConfig> GrassBasedObjects = new List<BiomeObjectConfig>();
-	public List<BiomeObjectConfig> SnowBasedObjects = new List<BiomeObjectConfig>();
-
-
-	public Dictionary<BiomeType, List<BiomeObjectConfig>> biomeToStructures;
 	public Dictionary<BiomeType, float> biomeToWeight;
 
 
@@ -44,13 +38,11 @@ public class BiomeObjectSpawner : MonoBehaviour
 	public void Initialize()
 	{
 
-		biomeToStructures = new Dictionary<BiomeType, List<BiomeObjectConfig>>();
 		biomeToWeight = new Dictionary<BiomeType, float>();
 
 		BiomeType[] enumArray = (BiomeType[])System.Enum.GetValues(typeof(BiomeType));
 		foreach (BiomeType b in enumArray)
 		{
-			biomeToStructures[b] = new List<BiomeObjectConfig>();
 			biomeToWeight[b] = 0;
 		}
 		PopulateDictionaries();
@@ -58,30 +50,6 @@ public class BiomeObjectSpawner : MonoBehaviour
 
 	public void PopulateDictionaries()
 	{
-		foreach (BiomeObjectConfig config in DesertBasedObjects)
-		{
-			foreach (BiomeType b in config.biomes)
-			{
-				biomeToStructures[b].Add(config);
-				biomeToWeight[b] = biomeToWeight[b] + config.spawnWeight;
-			}
-		}
-		foreach (BiomeObjectConfig config in GrassBasedObjects)
-		{
-			foreach (BiomeType b in config.biomes)
-			{
-				biomeToStructures[b].Add(config);
-				biomeToWeight[b] = biomeToWeight[b] + config.spawnWeight;
-			}
-		}
-		foreach (BiomeObjectConfig config in SnowBasedObjects)
-		{
-			foreach (BiomeType b in config.biomes)
-			{
-				biomeToStructures[b].Add(config);
-				biomeToWeight[b] = biomeToWeight[b] + config.spawnWeight;
-			}
-		}
 	}
 
 	public void SpawnObjectsForBiomes(int mapResolution, Tile[,] Tiles, TerrainData terrainData)
@@ -95,70 +63,6 @@ public class BiomeObjectSpawner : MonoBehaviour
 			BiomeObj bOb = BiomeManager.Instance.biomeMapping[b.ToString()];
 			AltSpawnObject(bOb, mapResolution, Tiles, terrainData);
 		}
-	}
-
-	private void SpawnObject(BiomeType biomeToSpawn, int mapResolution,Tile[,] Tiles, TerrainData terrainData)
-	{
-		if (biomeToStructures[biomeToSpawn].Count == 0) { Debug.Log("no objects for the biome."); return; }
-
-
-
-		float radius = GetBiomeRadius(biomeToSpawn);
-		Vector2 mapSize = mapResolution * Vector2.one;
-		List<Vector2> validPoints = ObjectPlacer.GeneratePoints(radius, mapSize, REJECTION_SAMPLES);
-
-		foreach(Vector2 workingPoint in validPoints)
-		{
-			//Determine if its in the specific biome.
-			string workingBiome = Tiles[(int)workingPoint.y, (int)workingPoint.x].primaryBiomeType;
-			if (workingBiome != biomeToSpawn.ToString()) { continue; }
-
-			//If so, then we determine what object to spawn at the point.
-			BiomeObjectConfig configToUse = GetConfigToUse(biomeToSpawn);
-			if (configToUse == null) { Debug.Log(string.Format("Biome: {0} returned null.", biomeToSpawn)); continue; }
-			
-			//Is angle valid?
-			Vector3 normal = terrainData.GetInterpolatedNormal(workingPoint.x / mapResolution, workingPoint.y / mapResolution);
-			float angle = Vector3.Angle(normal, Vector3.up);
-			if (angle > configToUse.maxAngle) { continue; }
-
-			//Spawn chance.
-			if (Random.Range(0f, 1f) > configToUse.spawnProbability) { continue; }
-			float height = terrainData.GetInterpolatedHeight(workingPoint.x / mapResolution, workingPoint.y / mapResolution) + configToUse.heightOffset;
-			//Spawn the object in correct position.
-			Vector3 targetPosition = new Vector3(workingPoint.x, height, workingPoint.y);
-			Quaternion spawnAngle = Quaternion.Euler(0, 0, angle / 2);
-			try
-			{
-				Instantiate(configToUse.objectPrefab, targetPosition, spawnAngle, transform);
-			}
-			catch(UnassignedReferenceException)
-			{
-				Debug.Log("error with: " + configToUse.name);
-			}
-
-		}
-	}
-
-	private BiomeObjectConfig GetConfigToUse(BiomeType biome)
-	{
-		List<BiomeObjectConfig> allObjects = biomeToStructures[biome];
-		if (allObjects.Count == 0) { Debug.Log("no objects for the biome."); return null; }
-		float totalW = biomeToWeight[biome];
-		float randomVal = Random.Range(0f, 1f);//will need to seed.
-		for (int i = 0; i < allObjects.Count; i++)
-		{
-			if (randomVal <= allObjects[i].spawnWeight / totalW)
-			{
-				return allObjects[i];
-			}
-			else
-			{
-				randomVal -= allObjects[i].spawnWeight / totalW;
-			}
-		}
-		Debug.Log("problem finding weighted object for val: " + randomVal);
-		return allObjects[allObjects.Count - 1];
 	}
 
 	private void DestroyPreviousChildren()

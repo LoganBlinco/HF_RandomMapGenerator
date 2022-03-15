@@ -49,12 +49,9 @@ public class BiomeManager : MonoBehaviour
                     layers.Add(block.layer);
                     block.setTerrainLayerIndex(currentIndex);
                     currentIndex++;
-                    BiomeType biometype = (BiomeType)System.Enum.Parse(typeof(BiomeType), b.getName());
-                    //Generator.Instance.biomeDict[biometype].addBlock(block);
                 }
             }
         }
-
         data.terrainLayers = layers.ToArray();
     }
 
