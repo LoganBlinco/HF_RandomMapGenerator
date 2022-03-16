@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272e174b53f76e643973a4a9e3d1cc42, type: 3}
   m_Name: WorldStructure_BigRocks
   m_EditorClassIdentifier: 
-  spawnType: 0
+  spawnType: 1
   primaryObjects:
   - {fileID: 11400000, guid: b304c03c2db44e04ca8de7ace923fb2f, type: 2}
   - {fileID: 11400000, guid: 11e236a54a9e7af488432364cb82aa43, type: 2}
@@ -24,8 +24,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8c1556422f5e2e846a99f4f3460d217d, type: 2}
   - {fileID: 11400000, guid: 5a67881eec66322419d802714fe06a87, type: 2}
   - {fileID: 11400000, guid: fc253f0dc4ff9c54f8f038ea9b488765, type: 2}
-  structureSpawnProbability: 0.645
-  structureSpawnWeight: 0.522
+  structureSpawnProbability: 1
+  structureSpawnWeight: 1
   maxAngle: {x: 0, y: 90, z: 0}
   minObjectsToSpawn: 4
   maxObjectsToSpawn: 7

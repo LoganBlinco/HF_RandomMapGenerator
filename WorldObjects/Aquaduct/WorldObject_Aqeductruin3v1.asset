@@ -18,9 +18,8 @@ MonoBehaviour:
   heightOffset: {x: 0, y: -0.5, z: 0}
   objectPrefab: {fileID: 6562847062022031819, guid: acd61ce21ed2bf84db619a6b2d71956e,
     type: 3}
-  snapXRotation: 1
-  snapYRotation: 1
-  snapZRotation: 1
+  snapYRotation: 0
   randomScaleVariation: {x: 0, y: 0, z: 0}
   approxSize: {x: 5.85, y: 10, z: 5.85}
   pivotFix: {x: 0, y: -90, z: 0}
+  yAxisRotationRandomness: 0

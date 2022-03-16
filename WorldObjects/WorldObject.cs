@@ -33,39 +33,56 @@ public class WorldObject : ScriptableObject
 	[SerializeField]
 	private Vector3 pivotFix = new Vector3(0, 0, 0);
 
-	[Range(0,359)]
+	[Range(0,179)]
 	[SerializeField]
-	private float yAxisRotationRandomness = 359f;
+	private float yAxisRotationRandomness = 179;
 
 	//METHODS
 
 	public void CreateMeSnapInternal(Vector3 targetPosition, Transform parantObject, string biomeName, TerrainData terrainData)
 	{
-		float angle = StructureSpawner.getSteepnessValue(terrainData, targetPosition);
-		if (!spawnCheck(angle)) { return; }
+		float angle = StructureSpawner.GetSteepnessValue(terrainData, targetPosition);
+		if (!SpawnCheck(angle)) { return; }
 
-		var spawnedObj = createObject(targetPosition, Quaternion.identity, parantObject);
+		var spawnedObj = CreateObject(targetPosition, Quaternion.identity, parantObject);
 		spawnedObj.name = biomeName + ": " + spawnedObj.name;
 		if (snapYRotation)
 		{
-			spawnedObj.transform.up = StructureSpawner.getNormalValue(terrainData, targetPosition);
+			spawnedObj.transform.up = StructureSpawner.GetNormalValue(terrainData, targetPosition);
 		}
 		spawnedObj.transform.Rotate(pivotFix);
-		float randomAngle = Random.Range(0, yAxisRotationRandomness);
+		float randomAngle = Random.Range(-yAxisRotationRandomness, yAxisRotationRandomness);
+		spawnedObj.transform.Rotate(new Vector3(0, randomAngle, 0));
+	}
+
+	public void CreateMeRotate(Vector3 targetPosition, Transform parantObject, string biomeName, TerrainData terrainData, Vector3 direction)
+	{
+		float angle = StructureSpawner.GetSteepnessValue(terrainData, targetPosition);
+		if (!SpawnCheck(angle)) { return; }
+
+		var spawnedObj = CreateObject(targetPosition, Quaternion.identity, parantObject);
+		spawnedObj.name = biomeName + ": " + spawnedObj.name;
+		if (snapYRotation)
+		{
+			spawnedObj.transform.up = StructureSpawner.GetNormalValue(terrainData, targetPosition);
+		}
+		spawnedObj.transform.Rotate(pivotFix);
+		spawnedObj.transform.Rotate(direction);
+		float randomAngle = Random.Range(-yAxisRotationRandomness, yAxisRotationRandomness);
 		spawnedObj.transform.Rotate(new Vector3(0, randomAngle, 0));
 	}
 
 	public void CreateMeLookAt(Vector3 targetPos, Vector3 lookAngle, Transform parant, float angle)
 	{
-		if (!spawnCheck(angle)) { return; }
+		if (!SpawnCheck(angle)) { return; }
 
 
-		GameObject spawnedObj = createObject(targetPos, Quaternion.identity, parant);
+		GameObject spawnedObj = CreateObject(targetPos, Quaternion.identity, parant);
 		spawnedObj.transform.LookAt(lookAngle);
 		spawnedObj.transform.Rotate(pivotFix);
 	}
 
-	private GameObject createObject(Vector3 targetPos, Quaternion rotation, Transform parant)
+	private GameObject CreateObject(Vector3 targetPos, Quaternion rotation, Transform parant)
 	{
 		targetPos += heightOffset;
 		GameObject spawnedObj = Instantiate(objectPrefab, targetPos, rotation, parant);
@@ -73,7 +90,7 @@ public class WorldObject : ScriptableObject
 	}
 
 
-	private bool spawnCheck(float angle)
+	private bool SpawnCheck(float angle)
 	{
 		if (angle > maxAngle.y) { return false; }
 		if (Random.Range(0f, 1f) > spawnProbability) { return false; }

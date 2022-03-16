@@ -41,9 +41,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fd0ac0cba2639aa49a670990496fbe1a, type: 2}
   - {fileID: 11400000, guid: 07a34e3c0fc85ad42af2677d87f3aaec, type: 2}
   - {fileID: 11400000, guid: 88fd314d7e316de4ea095b394434310b, type: 2}
-  - {fileID: 11400000, guid: 0c08e9a360723874fbc862c8eef8a17e, type: 2}
-  - {fileID: 11400000, guid: 0c08e9a360723874fbc862c8eef8a17e, type: 2}
-  - {fileID: 11400000, guid: 0c08e9a360723874fbc862c8eef8a17e, type: 2}
-  - {fileID: 11400000, guid: 0c08e9a360723874fbc862c8eef8a17e, type: 2}
-  - {fileID: 11400000, guid: 0c08e9a360723874fbc862c8eef8a17e, type: 2}
   lowDensityObjectRadius: 45

@@ -60,10 +60,9 @@ public class Generator : MonoBehaviour
 	[Header("No Grass Detail")]
 	[Range(0, 100)]
 	public int noDetailScale = 5;
-	private int noDetailOctaves = 1;
-	private int noDetailFreq = 1;
-	private int noDetailAmplitudeMod = 1;
-	private int noDetailFreqMod = 1;
+	private readonly int noDetailOctaves = 1;
+	private readonly int noDetailAmplitudeMod = 1;
+	private readonly int noDetailFreqMod = 1;
 
 
 	[Header("Seed")]
@@ -97,7 +96,7 @@ public class Generator : MonoBehaviour
 	public BiomeMapDefaults biomeImportSettings = BiomeMapDefaults.Default;
 
 
-	public long getSeedOffset()
+	public long GetSeedOffset()
 	{
 		seedOffset += 1;
 		return seedOffset;
@@ -211,8 +210,8 @@ public class Generator : MonoBehaviour
 		float[,] finalH = new float[mapResolution, mapResolution];
 
 		baseTerrainNoise.Initialize(seed);
-		heatNoise.Initialize(seed + getSeedOffset());
-		moistureNoise.Initialize(seed + getSeedOffset());
+		heatNoise.Initialize(seed + GetSeedOffset());
+		moistureNoise.Initialize(seed + GetSeedOffset());
 		Tiles = new Tile[mapResolution, mapResolution];
 		for (int x = 0;x<mapResolution;x++)
 		{
@@ -264,14 +263,14 @@ public class Generator : MonoBehaviour
 		PaintMap(mapResolution,Tiles, terrainData);
 
 
-		detailNoise.Initialize(seed + getSeedOffset());
-		detailNoise2.Initialize(seed + getSeedOffset());
+		detailNoise.Initialize(seed + GetSeedOffset());
+		detailNoise2.Initialize(seed + GetSeedOffset());
 
 		// Get the mesh we are rendering our output to
 
 		//HandleOutputTextures(finalH, detailMap, detailMap2);
 
-		Dictionary<string, GeneratorSettings> altGrassNoDetailNoise = AltGenerateGrassNoDetailNoise(noDetailOctaves, noDetailScale, noDetailFreq, noDetailFreqMod, noDetailAmplitudeMod, seed);
+		Dictionary<string, GeneratorSettings> altGrassNoDetailNoise = AltGenerateGrassNoDetailNoise(noDetailOctaves, noDetailScale, noDetailFreqMod, noDetailAmplitudeMod, seed);
 		AltDetailMap(terrainData, Tiles, detailNoise, detailNoise2, altGrassNoDetailNoise);
 		//DetailMap(terrainData, Tiles, detailNoise,detailNoise2,grassNoDetailNoise);
 
@@ -297,14 +296,14 @@ public class Generator : MonoBehaviour
 	}
 
 
-	private Dictionary<string, GeneratorSettings> AltGenerateGrassNoDetailNoise(int noDetailOctaves, int noDetailScale, int noDetailFreq, int noDetailFreqMod, int noDetailAmplitudeMod, long seed)
+	private Dictionary<string, GeneratorSettings> AltGenerateGrassNoDetailNoise(int noDetailOctaves, int noDetailScale, int noDetailFreqMod, int noDetailAmplitudeMod, long seed)
 	{
 		Dictionary<string, GeneratorSettings> final = new Dictionary<string, GeneratorSettings>();
 		List<GrassConfigFile> types = BiomeManager.Instance.details;
 		for (int i = 0; i < types.Count; i++)
 		{
 			GeneratorSettings temp = ScriptableObject.CreateInstance<GeneratorSettings>();
-			temp.FakeConstructor(noDetailOctaves, noDetailScale, noDetailAmplitudeMod, noDetailFreqMod, 0, NoiseType.Standard, seed + getSeedOffset());
+			temp.FakeConstructor(noDetailOctaves, noDetailScale, noDetailAmplitudeMod, noDetailFreqMod, 0, NoiseType.Standard, seed + GetSeedOffset());
 			final[types[i].name] = temp;
 		}
 		return final;
@@ -411,7 +410,7 @@ public class Generator : MonoBehaviour
 
 	public long GetNextSeed()
 	{
-		return seed + getSeedOffset();
+		return seed + GetSeedOffset();
 	}
 
 

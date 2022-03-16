@@ -25,15 +25,15 @@ public class StructureSpawner : MonoBehaviour
 	private const int REJECTION_SAMPLES = 30;
 	public float radiusBetweenStructures = 80;
 
-	public struct returnData
+	public struct ReturnData
 	{
 		public Vector2 point;
 		public Vector2 direction;
 	}
 
-	public returnData GetNextLocations(Vector2 direction, Vector2 point, float randomVariation)
+	public ReturnData GetNextLocations(Vector2 direction, Vector2 point, float randomVariation)
 	{
-		returnData temp = new returnData();
+		ReturnData temp = new ReturnData();
 
 		Vector2 directionNormal = new Vector2(direction.y, -direction.x);
 		directionNormal += Random.Range(-randomVariation, randomVariation) * Vector2.right + Random.Range(-randomVariation, randomVariation) * Vector2.up;
@@ -95,7 +95,7 @@ public class StructureSpawner : MonoBehaviour
 			targetPos += terrainData.GetInterpolatedHeight(workingPoint.x / mapResolution, workingPoint.y / mapResolution) * Vector3.up;
 			
 			
-			float angle = getSteepnessValue(terrainData, workingPoint);
+			float angle = GetSteepnessValue(terrainData, workingPoint);
 
 			float objectSize = objectToSpawn.approxSize.x;
 
@@ -158,7 +158,7 @@ public class StructureSpawner : MonoBehaviour
 	}
 
 	private void SpawnObjectOnTerrainSnap(WorldObject objectToSpawn, Vector2 workingPoint,
-		int mapSize, int mapResolution, TerrainData terrainData,GameObject parantObject)
+		int mapSize, int mapResolution, TerrainData terrainData,GameObject parantObject, Vector2 direction)
 	{
 
 		Vector3 targetPos = new Vector3(workingPoint.x,
@@ -167,7 +167,9 @@ public class StructureSpawner : MonoBehaviour
 
 		if (ValidPoint(workingPoint, mapSize))
 		{
-			objectToSpawn.CreateMeSnapInternal(targetPos, parantObject.transform, "", terrainData);
+			float angle = Mathf.Rad2Deg * Mathf.Atan(direction.y / direction.x);
+			Vector3 rotationDirection = new Vector3(0, angle, 0);
+			objectToSpawn.CreateMeRotate(targetPos, parantObject.transform, "", terrainData, rotationDirection);
 		}
 	}
 
@@ -195,7 +197,7 @@ public class StructureSpawner : MonoBehaviour
 
 			//Is angle valid?
 			//Vector3 normal = terrainData.GetInterpolatedNormal(workingPoint.x / mapResolution, workingPoint.y / mapResolution);
-			Vector3 normal = getNormalValue(terrainData, workingPoint);
+			Vector3 normal = GetNormalValue(terrainData, workingPoint);
 			float angle = Vector3.Angle(normal, Vector3.up);
 			if (angle > structureToSpawn.maxAngle.y) { continue; }//TODO : implement more than just up
 
@@ -272,7 +274,7 @@ public class StructureSpawner : MonoBehaviour
 		GameObject parantObject = new GameObject(structureToSpawn.name);
 		parantObject.transform.SetParent(parantTransform);
 
-		returnData currentData = new returnData()
+		ReturnData currentData = new ReturnData()
 		{
 			direction = directionToSpawn,
 			point = workingPoint
@@ -288,7 +290,7 @@ public class StructureSpawner : MonoBehaviour
 			currentData.point += currentData.direction * Random.Range(structureToSpawn.perpendicular_MinDistanceToSpawn, structureToSpawn.perpendicular_MaxDistanceToSpawn);
 
 
-			SpawnObjectOnTerrainSnap(objectToSpawn, currentData.point, mapSize, mapResolution, terrainData, parantObject);
+			SpawnObjectOnTerrainSnap(objectToSpawn, currentData.point, mapSize, mapResolution, terrainData, parantObject,currentData.direction);
 		}
 
 	}
@@ -345,7 +347,7 @@ public class StructureSpawner : MonoBehaviour
 	// PRIVATE METHODS
 
 
-	public static float getSteepnessValue(TerrainData terrainData, Vector2 workingPoint)
+	public static float GetSteepnessValue(TerrainData terrainData, Vector2 workingPoint)
 	{
 		float y_01 = (float)workingPoint.y / (float)terrainData.heightmapResolution;
 		float x_01 = (float)workingPoint.x / (float)terrainData.heightmapResolution;
@@ -353,7 +355,7 @@ public class StructureSpawner : MonoBehaviour
 
 	}
 
-	public static float getSteepnessValue(TerrainData terrainData, Vector3 workingPoint)
+	public static float GetSteepnessValue(TerrainData terrainData, Vector3 workingPoint)
 	{
 		float y_01 = (float)workingPoint.z / (float)terrainData.heightmapResolution;
 		float x_01 = (float)workingPoint.x / (float)terrainData.heightmapResolution;
@@ -362,13 +364,13 @@ public class StructureSpawner : MonoBehaviour
 	}
 
 
-	public static Vector3 getNormalValue(TerrainData terrainData, Vector2 workingPoint)
+	public static Vector3 GetNormalValue(TerrainData terrainData, Vector2 workingPoint)
 	{
 		int heightMapResolution = terrainData.heightmapResolution;
 		return terrainData.GetInterpolatedNormal(workingPoint.x / heightMapResolution, workingPoint.y / heightMapResolution);
 	}
 
-	public static Vector3 getNormalValue(TerrainData terrainData, Vector3 workingPoint)
+	public static Vector3 GetNormalValue(TerrainData terrainData, Vector3 workingPoint)
 	{
 		int heightMapResolution = terrainData.heightmapResolution;
 		return terrainData.GetInterpolatedNormal(workingPoint.x / heightMapResolution, workingPoint.z / heightMapResolution);
