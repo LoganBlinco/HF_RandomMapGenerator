@@ -31,9 +31,21 @@ public class WorldStructure : ScriptableObject
 	public float perpendicular_MaxDistanceToSpawn = 7;
 
 	[Header("SubStructure settings -- WIP")]
+	//public WorldStructure subStructure;
+	//public SubStructureSpawnTypes subStructure_spawnFrom = SubStructureSpawnTypes.spawnFromPointStartPoint;
+
+	[SerializeField]
+	public List<Wrapper_WorldStructures> subStructures = new List<Wrapper_WorldStructures>();
+
+
+
+}
+
+[System.Serializable]
+public class Wrapper_WorldStructures
+{
+	[SerializeField]
 	public WorldStructure subStructure;
-	public SubStructureSpawnTypes subStructure_spawnFrom = SubStructureSpawnTypes.spawnFromPoint;
-
-
-
+	[SerializeField]
+	public SubStructureSpawnTypes subStructure_spawnFrom = SubStructureSpawnTypes.spawnFromPointStartPoint;
 }

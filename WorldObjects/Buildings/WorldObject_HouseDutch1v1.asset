@@ -20,6 +20,6 @@ MonoBehaviour:
     type: 3}
   snapYRotation: 1
   randomScaleVariation: {x: 0, y: 0, z: 0}
-  approxSize: {x: 0, y: 0, z: 0}
+  approxSize: {x: 15, y: 0, z: 15}
   pivotFix: {x: 0, y: 0, z: 0}
-  yAxisRotationRandomness: 359
+  yAxisRotationRandomness: 40

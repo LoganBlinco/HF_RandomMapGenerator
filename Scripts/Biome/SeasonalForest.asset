@@ -26,6 +26,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 87fa5afd0744804478c94eb91880616f, type: 2}
   - {fileID: 11400000, guid: 6033c55009d09d54eae3be8d5df55e0b, type: 2}
   - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
-  middleDensityObjectRadius: 20
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  middleDensityObjectRadius: 25
   lowDensityObjects: []
   lowDensityObjectRadius: 30

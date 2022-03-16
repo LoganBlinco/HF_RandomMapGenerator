@@ -4,5 +4,9 @@ using UnityEngine;
 
 public enum SubStructureSpawnTypes
 {
-	spawnFromPoint
+	spawnFromPointStartPoint,
+	spawnFromMidPoint,
+	spawnFromPointAndDirectionWithOffset,
+	spawnFromInitialPointWithSingleObjectSizeOffset,
+	OffSetByDistance,
 }

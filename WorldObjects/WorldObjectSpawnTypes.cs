@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum WorldObjectSpawnTypes
 {
+	Single,
 	Line,
 	Scatter,
 	Perpendicular,

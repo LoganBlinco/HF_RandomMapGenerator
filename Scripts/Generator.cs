@@ -254,7 +254,7 @@ public class Generator : MonoBehaviour
 		//Generate the Main objects
 		BiomeObjectSpawner.Instance.SpawnObjectsForBiomes(mapResolution, Tiles, terrainData);
 
-		StructureSpawner.Instance.AltSpawnStructuresForBiomes(mapResolution, Tiles, terrainData, MapSize);
+		StructureSpawner.Instance.SpawnStructuresForBiomes(mapResolution, Tiles, terrainData, MapSize);
 
 
 

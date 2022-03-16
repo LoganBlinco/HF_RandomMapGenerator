@@ -12,17 +12,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272e174b53f76e643973a4a9e3d1cc42, type: 3}
   m_Name: WorldStructure_Rock_Sandstone
   m_EditorClassIdentifier: 
-  spawnType: 0
-  primaryObjects: []
-  structureSpawnProbability: 1
+  spawnType: 3
+  primaryObjects:
+  - {fileID: 11400000, guid: dad2f41f0e960a441b0826e81c21917a, type: 2}
+  - {fileID: 11400000, guid: c8d792cec6887b643bd84117917f04de, type: 2}
+  - {fileID: 11400000, guid: 645aba0dd17297848bb0422f68f50e3d, type: 2}
+  - {fileID: 11400000, guid: 8e628cb5b25b71e41ae0378163299881, type: 2}
+  - {fileID: 11400000, guid: 8c30e84681bbcd8458c798bac8d52e52, type: 2}
+  - {fileID: 11400000, guid: 29e8131e6698c4a469c09342a60ee590, type: 2}
+  - {fileID: 11400000, guid: c0e4690c1cae5d64aa63b61b76fe27dd, type: 2}
+  - {fileID: 11400000, guid: 94a160040864b744aa0a03b7e389799c, type: 2}
+  - {fileID: 11400000, guid: b2036805de36c094cabd10e641791980, type: 2}
+  - {fileID: 11400000, guid: a81a945a76766844986fb2662303f3f8, type: 2}
+  - {fileID: 11400000, guid: c3e81992baf09ab4cbf0cdc2ca454871, type: 2}
+  - {fileID: 11400000, guid: 8c793dd28326cf3469ef8e7ac8b7859e, type: 2}
+  - {fileID: 11400000, guid: 9122b04e676754d4a9c4ed591278ca9d, type: 2}
+  - {fileID: 11400000, guid: ae8008a24d2aa1944b02c7f632732ec9, type: 2}
+  - {fileID: 11400000, guid: 0ff66fb959ed0354694c85abf71e2463, type: 2}
+  - {fileID: 11400000, guid: af4c6385c33a53b43a7931da2baad336, type: 2}
+  - {fileID: 11400000, guid: 619c36f8ce00d6c429477a29dbf28e95, type: 2}
+  - {fileID: 11400000, guid: cf4836527d1b26f44b2fd668be4a1b8f, type: 2}
+  - {fileID: 11400000, guid: 2cf41db14eeb925468f9c5c9f23a1fdb, type: 2}
+  - {fileID: 11400000, guid: b875d1d1bb5f0e3499a0d926508e2cff, type: 2}
+  - {fileID: 11400000, guid: 674001cbc5ff05742aa9b07a01ddd269, type: 2}
+  - {fileID: 11400000, guid: 020d8964dc96d8d4092b23230543721e, type: 2}
+  - {fileID: 11400000, guid: 45c475a0406b07444881384e2a3a2a1b, type: 2}
+  - {fileID: 11400000, guid: d3d8fdbb75b0a82418fae305670c166f, type: 2}
+  - {fileID: 11400000, guid: 160f888392b6b7b43975e1587989f917, type: 2}
+  - {fileID: 11400000, guid: f980bd968dbdb1e4596fc68ed5c4799b, type: 2}
+  - {fileID: 11400000, guid: 644c7ef8ac0e2c14a9be4f9895434572, type: 2}
+  structureSpawnProbability: 0.69
   structureSpawnWeight: 1
-  maxAngle: {x: 0, y: 90, z: 0}
-  minObjectsToSpawn: 1
-  maxObjectsToSpawn: 4
+  maxAngle: {x: 0, y: 45, z: 0}
+  minObjectsToSpawn: 3
+  maxObjectsToSpawn: 6
   scatterRadius: 5
   scatterSize: {x: 10, y: 10}
   perpendicular_AngleVariance: 15
-  perpendicular_MinDistanceToSpawn: 1.5
-  perpendicular_MaxDistanceToSpawn: 7
-  subStructure: {fileID: 0}
-  subStructure_spawnFrom: 0
+  perpendicular_MinDistanceToSpawn: 3
+  perpendicular_MaxDistanceToSpawn: 8
+  subStructures: []

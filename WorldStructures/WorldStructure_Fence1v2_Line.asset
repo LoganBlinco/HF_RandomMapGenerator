@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272e174b53f76e643973a4a9e3d1cc42, type: 3}
   m_Name: WorldStructure_Fence1v2_Line
   m_EditorClassIdentifier: 
-  spawnType: 3
+  spawnType: 1
   primaryObjects:
   - {fileID: 11400000, guid: 89a407453a897cc4cb05419693bb9e02, type: 2}
   structureSpawnProbability: 1
@@ -22,3 +22,7 @@ MonoBehaviour:
   maxObjectsToSpawn: 12
   scatterRadius: 5
   scatterSize: {x: 10, y: 10}
+  perpendicular_AngleVariance: 15
+  perpendicular_MinDistanceToSpawn: 1.5
+  perpendicular_MaxDistanceToSpawn: 7
+  subStructures: []

@@ -22,3 +22,9 @@ MonoBehaviour:
   maxObjectsToSpawn: 1
   scatterRadius: 5
   scatterSize: {x: 10, y: 10}
+  perpendicular_AngleVariance: 15
+  perpendicular_MinDistanceToSpawn: 1.5
+  perpendicular_MaxDistanceToSpawn: 7
+  subStructures:
+  - subStructure: {fileID: 11400000, guid: 4b2776445db5433449c6abe1cc104019, type: 2}
+    subStructure_spawnFrom: 3

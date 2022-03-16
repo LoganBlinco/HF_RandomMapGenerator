@@ -30,7 +30,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d719fd1542e8b11448edabc18226ece0, type: 2}
   - {fileID: 11400000, guid: 8f92ee96202499746bd16183b2b50a2a, type: 2}
   - {fileID: 11400000, guid: 6550ca035a35ce143a03f48ee6813d38, type: 2}
-  middleDensityObjectRadius: 21
+  middleDensityObjectRadius: 38
   lowDensityObjects:
   - {fileID: 11400000, guid: 17a897ad87cc0a243ad44f7b7199a5e2, type: 2}
   - {fileID: 11400000, guid: c4851c83a24aa7e4d863a632dab100c4, type: 2}

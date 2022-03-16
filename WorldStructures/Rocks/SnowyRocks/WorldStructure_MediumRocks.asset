@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272e174b53f76e643973a4a9e3d1cc42, type: 3}
   m_Name: WorldStructure_MediumRocks
   m_EditorClassIdentifier: 
-  spawnType: 2
+  spawnType: 3
   primaryObjects:
   - {fileID: 11400000, guid: 5b5acc49e73b4e84eae577d4964fc6f4, type: 2}
   - {fileID: 11400000, guid: e597f30c69b9f834e83f6ff18f3faf50, type: 2}
@@ -36,5 +36,4 @@ MonoBehaviour:
   perpendicular_AngleVariance: 15
   perpendicular_MinDistanceToSpawn: 4
   perpendicular_MaxDistanceToSpawn: 12
-  subStructure: {fileID: 0}
-  subStructure_spawnFrom: 0
+  subStructures: []

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272e174b53f76e643973a4a9e3d1cc42, type: 3}
   m_Name: WorldStructure_BigRocks
   m_EditorClassIdentifier: 
-  spawnType: 1
+  spawnType: 2
   primaryObjects:
   - {fileID: 11400000, guid: b304c03c2db44e04ca8de7ace923fb2f, type: 2}
   - {fileID: 11400000, guid: 11e236a54a9e7af488432364cb82aa43, type: 2}
@@ -34,5 +34,4 @@ MonoBehaviour:
   perpendicular_AngleVariance: 15
   perpendicular_MinDistanceToSpawn: 1.5
   perpendicular_MaxDistanceToSpawn: 7
-  subStructure: {fileID: 0}
-  subStructure_spawnFrom: 0
+  subStructures: []

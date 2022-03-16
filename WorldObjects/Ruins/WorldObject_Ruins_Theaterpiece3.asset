@@ -21,5 +21,5 @@ MonoBehaviour:
   snapYRotation: 0
   randomScaleVariation: {x: 0, y: 0, z: 0}
   approxSize: {x: 0, y: 0, z: 0}
-  pivotFix: {x: 90, y: 0, z: 0}
+  pivotFix: {x: 0, y: 0, z: 0}
   yAxisRotationRandomness: 179

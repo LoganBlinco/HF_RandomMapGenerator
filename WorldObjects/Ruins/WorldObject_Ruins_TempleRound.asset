@@ -15,7 +15,7 @@ MonoBehaviour:
   spawnProbability: 1
   spawnWeight: 1
   maxAngle: {x: 0, y: 11, z: 0}
-  heightOffset: {x: 0, y: -0.25, z: 0}
+  heightOffset: {x: 0, y: -0.5, z: 0}
   objectPrefab: {fileID: 1634763965485703940, guid: ddc5d8cf0719ec4449d8f5a48b927c0b,
     type: 3}
   snapYRotation: 0

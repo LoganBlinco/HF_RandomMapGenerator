@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8128ad10f4296c7488a9859022cb5de0, type: 2}
   structureSpawnProbability: 0.6
   structureSpawnWeight: 0.35
-  maxAngle: {x: 0, y: 90, z: 0}
+  maxAngle: {x: 0, y: 12, z: 0}
   minObjectsToSpawn: 1
   maxObjectsToSpawn: 1
   scatterRadius: 5

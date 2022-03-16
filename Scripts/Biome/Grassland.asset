@@ -30,6 +30,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 87fa5afd0744804478c94eb91880616f, type: 2}
   - {fileID: 11400000, guid: 6033c55009d09d54eae3be8d5df55e0b, type: 2}
   - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
+  - {fileID: 11400000, guid: 3d1260478d5a7544d9cc473488777cb6, type: 2}
   middleDensityObjectRadius: 28
   lowDensityObjects:
   - {fileID: 11400000, guid: 4b2776445db5433449c6abe1cc104019, type: 2}

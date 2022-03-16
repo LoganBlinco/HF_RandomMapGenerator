@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272e174b53f76e643973a4a9e3d1cc42, type: 3}
   m_Name: WorldStructure_Aquaduct
   m_EditorClassIdentifier: 
-  spawnType: 0
+  spawnType: 1
   primaryObjects:
   - {fileID: 11400000, guid: 10d28cea388712e4e8ab80cf49ca64dc, type: 2}
   - {fileID: 11400000, guid: cb12bdd8eaadc3949812fb6e3e68b9cc, type: 2}
@@ -21,12 +21,15 @@ MonoBehaviour:
   structureSpawnProbability: 1
   structureSpawnWeight: 1
   maxAngle: {x: 0, y: 30, z: 0}
-  minObjectsToSpawn: 3
-  maxObjectsToSpawn: 8
+  minObjectsToSpawn: 6
+  maxObjectsToSpawn: 12
   scatterRadius: 5
   scatterSize: {x: 10, y: 10}
   perpendicular_AngleVariance: 15
-  perpendicular_MinDistanceToSpawn: 1.5
-  perpendicular_MaxDistanceToSpawn: 7
-  subStructure: {fileID: 0}
-  subStructure_spawnFrom: 0
+  perpendicular_MinDistanceToSpawn: 4
+  perpendicular_MaxDistanceToSpawn: 10
+  subStructures:
+  - subStructure: {fileID: 11400000, guid: c551b4e8b7b21e540880775795e63a3a, type: 2}
+    subStructure_spawnFrom: 2
+  - subStructure: {fileID: 11400000, guid: 99f9b26c4a618ef42a6e47fbc297a1ef, type: 2}
+    subStructure_spawnFrom: 2

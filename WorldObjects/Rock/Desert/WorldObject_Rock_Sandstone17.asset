@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b9152c606044a42b211ac1dce295a2, type: 3}
   m_Name: WorldObject_Rock_Sandstone17
   m_EditorClassIdentifier: 
-  spawnProbability: 1
+  spawnProbability: 0.609
   spawnWeight: 1
   maxAngle: {x: 0, y: 25, z: 0}
-  heightOffset: {x: 0, y: -0.05, z: 0}
-  objectPrefab: {fileID: 0}
+  heightOffset: {x: 0, y: -0.1, z: 0}
+  objectPrefab: {fileID: 4023012547212925913, guid: ff528877c18f46145b36009012e0848b,
+    type: 3}
   snapYRotation: 1
   randomScaleVariation: {x: 0, y: 0, z: 0}
   approxSize: {x: 0, y: 0, z: 0}
   pivotFix: {x: 0, y: 0, z: 0}
-  yAxisRotationRandomness: 179
+  yAxisRotationRandomness: 12.5

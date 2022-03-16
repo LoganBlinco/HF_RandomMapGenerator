@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272e174b53f76e643973a4a9e3d1cc42, type: 3}
   m_Name: WorldStructure_Ruins_Cover_Small
   m_EditorClassIdentifier: 
-  spawnType: 2
+  spawnType: 3
   primaryObjects:
   - {fileID: 11400000, guid: f7f5fb551af1eda41a01c4c95b495ac5, type: 2}
   - {fileID: 11400000, guid: 5c43521c738e0c74cbddb5593aa2b2df, type: 2}
@@ -23,15 +23,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c01451dd45ba54449bf6b4de8758019b, type: 2}
   - {fileID: 11400000, guid: a334abc1d9f305543902380170d9900d, type: 2}
   - {fileID: 11400000, guid: c6fa8f3092c2f644e90c0c2e9d249a4a, type: 2}
+  - {fileID: 11400000, guid: 45c475a0406b07444881384e2a3a2a1b, type: 2}
+  - {fileID: 11400000, guid: f980bd968dbdb1e4596fc68ed5c4799b, type: 2}
   structureSpawnProbability: 1
   structureSpawnWeight: 1
   maxAngle: {x: 0, y: 90, z: 0}
-  minObjectsToSpawn: 1
-  maxObjectsToSpawn: 4
+  minObjectsToSpawn: 2
+  maxObjectsToSpawn: 5
   scatterRadius: 5
   scatterSize: {x: 10, y: 10}
   perpendicular_AngleVariance: 15
   perpendicular_MinDistanceToSpawn: 7
   perpendicular_MaxDistanceToSpawn: 15
-  subStructure: {fileID: 0}
-  subStructure_spawnFrom: 0
+  subStructures: []
