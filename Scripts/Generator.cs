@@ -96,6 +96,9 @@ public class Generator : MonoBehaviour
 	public BiomeMapDefaults biomeImportSettings = BiomeMapDefaults.Default;
 
 
+
+
+
 	public long GetSeedOffset()
 	{
 		seedOffset += 1;
@@ -158,6 +161,9 @@ public class Generator : MonoBehaviour
 			Debug.Log("creating strcuturespawner");
 			gameObject.AddComponent<StructureSpawner>();
 		}
+
+		StructureSpawner.Instance.initValues(MapSize);
+
 	}
 	public void Run_RandomSeed()
 	{
@@ -256,6 +262,7 @@ public class Generator : MonoBehaviour
 
 		StructureSpawner.Instance.SpawnStructuresForBiomes(mapResolution, Tiles, terrainData, MapSize);
 
+		StructureSpawner.Instance.RunSpawnCreator(terrainData, MapSize, mapResolution);
 
 
 		BiomeManager.Instance.init(terrainData);
@@ -275,11 +282,7 @@ public class Generator : MonoBehaviour
 		//DetailMap(terrainData, Tiles, detailNoise,detailNoise2,grassNoDetailNoise);
 
 
-		//finalH = SingleObjectStructuresController.Instance.PlaceStructure(mapResolution, Tiles,structureHolder,finalH);
 
-		//terrainData.SetHeights(0, 0, finalH);
-
-		//CreateObjects(finalH);
 		currentTerrain.Flush();
 		Debug.Log("finished");
 
@@ -437,7 +440,7 @@ public class Generator : MonoBehaviour
 	private void PaintMap(int tempSize, Tile[,] biomeMap, TerrainData terrainData)
 	{
 		int counter = 25;
-		float exponentPower = 1.7f;
+		float exponentPower = 1.3f;
 
 		float[,,] splatMap = new float[tempSize, tempSize, terrainData.alphamapLayers];
 		for (int x = 0; x < tempSize; x++)

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38b9152c606044a42b211ac1dce295a2, type: 3}
-  m_Name: WorldObject_Fence1v2
+  m_Name: WorldObject_Large_Tent_3
   m_EditorClassIdentifier: 
   spawnProbability: 1
   spawnWeight: 1
-  maxAngle: {x: 0, y: 25, z: 0}
+  maxAngle: {x: 0, y: 90, z: 0}
   heightOffset: {x: 0, y: -0.05, z: 0}
-  objectPrefab: {fileID: 623122360229112097, guid: 629c812ed237b8949a720a0ad24e11f6,
+  objectPrefab: {fileID: 2540225463851711601, guid: 57d35bc20b139ca4a98ad3a9ca8ebb97,
     type: 3}
   snapYRotation: 1
-  canOverlapObjects: 1
+  canOverlapObjects: 0
   randomScaleVariation: {x: 0, y: 0, z: 0}
-  approxSize: {x: 1.6, y: 1, z: 1.6}
-  pivotFix: {x: 0, y: 180, z: 0}
+  approxSize: {x: 0, y: 0, z: 0}
+  pivotFix: {x: 0, y: 0, z: 0}
   yAxisRotationRandomness: 179

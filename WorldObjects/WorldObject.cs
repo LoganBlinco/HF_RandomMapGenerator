@@ -23,6 +23,8 @@ public class WorldObject : ScriptableObject
 
 	[SerializeField]
 	private bool snapYRotation = true;
+	[SerializeField]
+	private bool canOverlapObjects = false;
 
 	[Tooltip("Random amount subtracted and added to object for scale placement")]
 	[SerializeField]
@@ -72,18 +74,55 @@ public class WorldObject : ScriptableObject
 		spawnedObj.transform.Rotate(new Vector3(0, randomAngle, 0));
 	}
 
-	public void CreateMeLookAt(Vector3 targetPos, Vector3 lookAngle, Transform parant, float angle)
+	public void CreateMeLookAt(Vector3 targetPos, Vector3 lookPosition, Transform parant, float angle)
 	{
 		if (!SpawnCheck(angle)) { return; }
 
 
 		GameObject spawnedObj = CreateObject(targetPos, Quaternion.identity, parant);
-		spawnedObj.transform.LookAt(lookAngle);
+		spawnedObj.transform.LookAt(lookPosition);
 		spawnedObj.transform.Rotate(pivotFix);
 	}
 
 	private GameObject CreateObject(Vector3 targetPos, Quaternion rotation, Transform parant)
 	{
+		var oTiles = StructureSpawner.Instance.objectTiles;
+		if (canOverlapObjects == false)
+		{
+			int X = Mathf.RoundToInt(targetPos.x);
+			int Z = Mathf.RoundToInt(targetPos.z);
+			try
+			{
+
+
+				int sum = oTiles[X, Z] + oTiles[X - 1, Z]
+					+ oTiles[X + 1, Z] + oTiles[X, Z - 1] + oTiles[X, Z + 1] +
+
+					oTiles[X-1, Z + 1]+ oTiles[X - 1, Z - 1]+
+					oTiles[X + 1, Z + 1] + oTiles[X + 1, Z - 1];
+
+				if (sum > 0)
+				{
+					GameObject tmp = new GameObject("Location already used");
+					tmp.transform.SetParent(parant);
+					return tmp;
+				}
+				else
+				{
+					StructureSpawner.Instance.objectTiles[X, Z] = 1;
+					StructureSpawner.Instance.objectTiles[(int)targetPos.x, (int)targetPos.z] = 1;
+				}
+			}
+			catch (IndexOutOfRangeException)
+			{
+				//occurs on edge of map it think.
+				//Debug.Log("Object: " + objectPrefab);
+			}
+		}
+
+
+
+
 		targetPos += heightOffset;
 		GameObject spawnedObj = Instantiate(objectPrefab, targetPos, rotation, parant);
 		return spawnedObj;

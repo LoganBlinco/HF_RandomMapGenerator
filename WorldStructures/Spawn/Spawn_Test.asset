@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e60b6f1813563847b8017892d478828, type: 3}
+  m_Name: Spawn_Test
+  m_EditorClassIdentifier: 
+  spawnLocation: {x: 35, y: 35}
+  pointToFace: {x: 150, y: 150}
+  centerStructures:
+  - {fileID: 11400000, guid: c684ac976d852b148b4722bafe2cf342, type: 2}
+  Zone3_Props:
+  - {fileID: 11400000, guid: 3e13a35139f3e5f47b573792c564409c, type: 2}
+  minForwardAngle: 20
+  maxForwardAngle: 45
+  minArtyDistance: 16
+  maxArtyDistance: 25
+  Zone2_Props:
+  - {fileID: 11400000, guid: 681d38b8bb60c714d98c209ac4269a87, type: 2}
+  Zone2SpawnChance: 0.5
+  minZone2Distance: 10
+  maxZone2Distance: 15
+  Zone4_Props:
+  - {fileID: 11400000, guid: 0f7365e6f54ce494bb5c02b87e305cbd, type: 2}
+  Zone4_CloseMinDistance: 7
+  Zone4_CloseMaxDistance: 12
+  Zone4_FarMinDistance: 20
+  Zone4_FarMaxDistance: 30
+  Zone5_Props:
+  - {fileID: 11400000, guid: 74995a295b7719b478e6c494d00c2c6c, type: 2}
+  Zone5SpawnChance: 1
+  Zone5_MinDistanceAddition: 1
+  Zone5_MaxDistanceAddition: -3
+  Zone5_MinAngleAddition: 15
+  Zone5_MaxAngle: 70
+  Zone6_Props:
+  - {fileID: 11400000, guid: b822d333ca5ed3f4987f4e14869b0261, type: 2}
+  Zone6SpawnChance: 0.6
+  Zone6_MinDistanceAddition: 8
+  Zone6_MaxDistanceAddition: 12
+  Zone6_MaxAngle: 35

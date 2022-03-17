@@ -19,11 +19,37 @@ public class StructureSpawner : MonoBehaviour
 		}
 	}
 
-
+	[Header("Spawn Points")]
+	public SpawnCreator attacking;
+	public float spawnSafeRadius = 30;
+	public List<Vector2> spawnPoints = new List<Vector2>();
 
 	//Non-changable values
 	private const int REJECTION_SAMPLES = 30;
 	public float radiusBetweenStructures = 80;
+
+	public int[,] objectTiles;
+
+	public void initValues(int mapSize)
+	{
+		spawnPoints.Add(attacking.spawnLocation);
+		objectTiles = new int[mapSize, mapSize];
+	}
+
+
+	//Spawn stuff
+
+	public void RunSpawnCreator(TerrainData terrainData, int mapSize, int mapResolution)
+	{
+		if (attacking != null)
+		{
+			//Then we run it.
+			attacking.PlaceMe(terrainData, this.gameObject, mapSize, mapResolution);
+		}
+	}
+
+
+
 
 	public struct ReturnData
 	{
@@ -79,8 +105,8 @@ public class StructureSpawner : MonoBehaviour
 	/// <param name="amountToSpawn"></param>
 	/// <param name="parantObject"></param>
 	/// <returns></returns>
-	private Vector2 HandleLineSpawn(WorldStructure structureToSpawn, Vector2 initialPoint, int mapResolution, TerrainData terrainData, 
-		int mapSize,Vector2 directionToSpawn, int amountToSpawn, GameObject parantObject)
+	public Vector2 HandleLineSpawn(WorldStructure structureToSpawn, Vector2 initialPoint, int mapResolution, TerrainData terrainData, 
+		int mapSize,Vector2 directionToSpawn, int amountToSpawn, GameObject parantObject, bool ignoreSpawn)
 	{
 		int amountOfPrimaryObjects = structureToSpawn.primaryObjects.Count;
 
@@ -107,7 +133,7 @@ public class StructureSpawner : MonoBehaviour
 			Vector3 lookAngle = new Vector3(workingPoint.x, terrainData.GetInterpolatedHeight(workingPoint.x / mapResolution, workingPoint.y / mapResolution), workingPoint.y);
 			//Spawn Object
 
-			if (ValidPoint(workingPoint, mapSize))
+			if (ValidPoint(workingPoint, mapSize,ignoreSpawn))
 			{
 				objectToSpawn.CreateMeLookAt(targetPos, lookAngle, parantObject.transform, angle);
 			}
@@ -119,7 +145,7 @@ public class StructureSpawner : MonoBehaviour
 
 
 	public CustomStructureReturnInfo NewSpawnLineObject(WorldStructure structureToSpawn, Vector2 initialPoint, int mapResolution, TerrainData terrainData,
-		int mapSize,Transform parantTransform, bool spawnAsSquare = false)
+		int mapSize,Transform parantTransform, bool spawnAsSquare, bool ignoreSpawn)
 	{
 		//spawning in a line.
 		int amountToSpawn = Random.Range(structureToSpawn.minObjectsToSpawn, structureToSpawn.maxObjectsToSpawn+1);
@@ -135,7 +161,7 @@ public class StructureSpawner : MonoBehaviour
 		//Spawn the line(s)
 		for (int i =0; i<4;i++)
 		{
-			workingPoint = HandleLineSpawn(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize, workingDirection, amountToSpawn, parantObject);
+			workingPoint = HandleLineSpawn(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize, workingDirection, amountToSpawn, parantObject, ignoreSpawn);
 			workingDirection = Vector2.Perpendicular(workingDirection);
 
 			//if not spawning a square then we end after spawning first line.
@@ -147,7 +173,7 @@ public class StructureSpawner : MonoBehaviour
 		return new CustomStructureReturnInfo(initialPoint, directionToSpawn, parantObject.transform);
 	}
 
-	private bool ValidPoint(Vector2 workingPoint, int mapSize)
+	private bool ValidPoint(Vector2 workingPoint, int mapSize, bool ignoreSpawn = false)
 	{
 		//Must be inside the map.
 		if (workingPoint.x < 0 || workingPoint.x > mapSize)
@@ -158,18 +184,42 @@ public class StructureSpawner : MonoBehaviour
 		{
 			return false;
 		}
+		if (ignoreSpawn)
+		{
+			return true;
+		}
+
+		//Check is it close to a spawn point.
+		if (CloseToSpawnCheck(workingPoint) == false)
+		{
+			return false;//could just return closeToSpawnCheck but i will add more in future
+		}
+
+		return true;
+	}
+
+	private bool CloseToSpawnCheck(Vector2 point)
+	{
+		foreach(Vector2 spawnPoint in spawnPoints)
+		{
+			if (Vector2.SqrMagnitude(point-spawnPoint) < spawnSafeRadius * spawnSafeRadius)
+			{
+				//Debug.Log("Distance: " + Vector2.SqrMagnitude(point - spawnPoint));
+				return false;
+			}
+		}
 		return true;
 	}
 
 	private void SpawnObjectOnTerrainSnap(WorldObject objectToSpawn, Vector2 workingPoint,
-		int mapSize, int mapResolution, TerrainData terrainData,GameObject parantObject, Vector2 direction)
+		int mapSize, int mapResolution, TerrainData terrainData,GameObject parantObject, Vector2 direction, bool ignoreSpawn)
 	{
 
 		Vector3 targetPos = new Vector3(workingPoint.x,
 			terrainData.GetInterpolatedHeight(workingPoint.x / mapResolution, workingPoint.y / mapResolution), 
 			workingPoint.y);
 
-		if (ValidPoint(workingPoint, mapSize))
+		if (ValidPoint(workingPoint, mapSize, ignoreSpawn))
 		{
 			float angle = Mathf.Rad2Deg * Mathf.Atan(direction.y / direction.x);
 			Vector3 rotationDirection = new Vector3(0, angle, 0);
@@ -180,7 +230,7 @@ public class StructureSpawner : MonoBehaviour
 
 
 
-	private void SpawnObject(BiomeObj biomeToSpawn, int mapResolution, Tile[,] Tiles, TerrainData terrainData, int mapSize)
+	private void SpawnObject(BiomeObj biomeToSpawn, int mapResolution, Tile[,] Tiles, TerrainData terrainData, int mapSize, bool ignoreSpawn)
 	{
 
 		if (biomeToSpawn.lowDensityObjects.Count == 0) { Debug.Log("no structures for the biome: " + biomeToSpawn); return; }
@@ -209,7 +259,7 @@ public class StructureSpawner : MonoBehaviour
 			if (Random.Range(0f, 1f) > structureToSpawn.structureSpawnProbability) { continue; }
 
 			//Spawn the structure.
-			CustomStructureReturnInfo structureInfo = SpawnStructre(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize,this.transform);
+			CustomStructureReturnInfo structureInfo = SpawnStructre(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize,this.transform, ignoreSpawn);
 
 			if (structureInfo.parantObject.childCount == 0 && structureInfo.parantObject != this.transform)
 			{
@@ -217,24 +267,24 @@ public class StructureSpawner : MonoBehaviour
 				DestroyImmediate(structureInfo.parantObject.gameObject);
 				continue;
 			}
-			HandleSubStructures(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize, structureInfo);
+			HandleSubStructures(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize, structureInfo, ignoreSpawn);
 
 		}
 	}
 
-	private void HandleSubStructures(WorldStructure structureToSpawn, Vector2 workingPoint, int mapResolution, TerrainData terrainData, int mapSize, CustomStructureReturnInfo structureInfo)
+	public void HandleSubStructures(WorldStructure structureToSpawn, Vector2 workingPoint, int mapResolution, TerrainData terrainData, int mapSize, CustomStructureReturnInfo structureInfo, bool ignoreSpawn)
 	{
 
 		if (structureToSpawn.subStructures.Count == 0) { return; }
 
 		foreach(Wrapper_WorldStructures sub in structureToSpawn.subStructures)
 		{
-			HandleSingleSubStructure(structureToSpawn, sub, workingPoint, structureInfo, mapResolution, mapSize, terrainData, structureInfo.parantObject);
+			HandleSingleSubStructure(structureToSpawn, sub, workingPoint, structureInfo, mapResolution, mapSize, terrainData, structureInfo.parantObject, ignoreSpawn);
 		}
 	}
 
 	private void HandleSingleSubStructure(WorldStructure structureToSpawn, Wrapper_WorldStructures sub, Vector2 workingPoint, CustomStructureReturnInfo structureInfo,
-		int mapResolution, int mapSize, TerrainData terrainData, Transform parantTransform)
+		int mapResolution, int mapSize, TerrainData terrainData, Transform parantTransform,bool ignoreSpawn)
 	{
 
 		if (structureToSpawn == sub.subStructure) { return; }//infinite loop.
@@ -244,7 +294,7 @@ public class StructureSpawner : MonoBehaviour
 
 		workingPoint = CalculateSubStructureWorkingPoint(workingPoint, structureToSpawn, structureInfo,sub.subStructure_spawnFrom);
 
-		SpawnStructre(sub.subStructure, workingPoint, mapResolution, terrainData, mapSize, parantTransform);
+		SpawnStructre(sub.subStructure, workingPoint, mapResolution, terrainData, mapSize, parantTransform, ignoreSpawn);
 	}
 
 
@@ -354,21 +404,21 @@ public class StructureSpawner : MonoBehaviour
 		throw new NotImplementedException();
 	}
 
-	private CustomStructureReturnInfo SpawnStructre(WorldStructure structureToSpawn, Vector2 workingPoint, int mapResolution, TerrainData terrainData, int mapSize,
-		Transform parantTransform)
+	public CustomStructureReturnInfo SpawnStructre(WorldStructure structureToSpawn, Vector2 workingPoint, int mapResolution, TerrainData terrainData, int mapSize,
+		Transform parantTransform,bool ignoreSpawn)
 	{
 		switch (structureToSpawn.spawnType)
 		{
 			case WorldObjectSpawnTypes.Single:
-				return SingleObjectPlacement(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize, parantTransform);
+				return SingleObjectPlacement(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize, parantTransform, ignoreSpawn);
 			case WorldObjectSpawnTypes.Line:
-				return NewSpawnLineObject(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize, parantTransform);
+				return NewSpawnLineObject(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize, parantTransform,false, ignoreSpawn);
 			case WorldObjectSpawnTypes.Square:
-				return NewSpawnLineObject(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize, parantTransform, true);
+				return NewSpawnLineObject(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize, parantTransform, true, ignoreSpawn);
 			case WorldObjectSpawnTypes.Scatter:
-				return SpawnScatterObject(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize, parantTransform);
+				return SpawnScatterObject(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize, parantTransform, ignoreSpawn);
 			case WorldObjectSpawnTypes.Perpendicular:
-				return SpawnPerpendicularObject(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize,parantTransform);
+				return SpawnPerpendicularObject(structureToSpawn, workingPoint, mapResolution, terrainData, mapSize,parantTransform, ignoreSpawn);
 
 			default:
 				Debug.Log("Not calculated for: " + structureToSpawn.spawnType);
@@ -376,7 +426,8 @@ public class StructureSpawner : MonoBehaviour
 		}
 	}
 
-	private CustomStructureReturnInfo SingleObjectPlacement(WorldStructure structureToSpawn, Vector2 workingPoint, int mapResolution, TerrainData terrainData, int mapSize, Transform parantTransform)
+	private CustomStructureReturnInfo SingleObjectPlacement(WorldStructure structureToSpawn, Vector2 workingPoint, int mapResolution,
+		TerrainData terrainData, int mapSize, Transform parantTransform,bool ignoreSpawn)
 	{
 		//Create Parant Object. 
 		GameObject parantObject = new GameObject(structureToSpawn.name);
@@ -389,12 +440,16 @@ public class StructureSpawner : MonoBehaviour
 
 		float height = terrainData.GetInterpolatedHeight(workingPoint.x / mapResolution, workingPoint.y / mapResolution);
 		Vector3 targetPosition = new Vector3(workingPoint.x, height, workingPoint.y);
-		building.CreateMeSnapInternal(targetPosition, parantObject.transform, "", terrainData);
+		if (ValidPoint(workingPoint, mapSize, ignoreSpawn))
+		{
+			building.CreateMeSnapInternal(targetPosition, parantObject.transform, "", terrainData);
+			return new CustomStructureReturnInfo(workingPoint, workingPoint, parantObject.transform);
+		}
 		return new CustomStructureReturnInfo(workingPoint, workingPoint, parantObject.transform);
 	}
 
 	private CustomStructureReturnInfo SpawnPerpendicularObject(WorldStructure structureToSpawn, Vector2 workingPoint, int mapResolution, TerrainData terrainData, int mapSize,
-		Transform parantTransform)
+		Transform parantTransform, bool ignoreSpawn)
 	{
 		//spawning in a line.
 		Vector3 maxAngle = structureToSpawn.maxAngle;
@@ -422,14 +477,14 @@ public class StructureSpawner : MonoBehaviour
 			currentData.point += currentData.direction * Random.Range(structureToSpawn.perpendicular_MinDistanceToSpawn, structureToSpawn.perpendicular_MaxDistanceToSpawn);
 
 
-			SpawnObjectOnTerrainSnap(objectToSpawn, currentData.point, mapSize, mapResolution, terrainData, parantObject,currentData.direction);
+			SpawnObjectOnTerrainSnap(objectToSpawn, currentData.point, mapSize, mapResolution, terrainData, parantObject,currentData.direction, ignoreSpawn);
 		}
 		return new CustomStructureReturnInfo(currentData.point,currentData.direction, parantObject.transform);
 
 	}
 
 	private CustomStructureReturnInfo SpawnScatterObject(WorldStructure structureToSpawn, Vector2 initialPoint, int mapResolution, TerrainData terrainData, int mapSize,
-		Transform parantTransform)
+		Transform parantTransform, bool ignoreSpawn)
 	{
 
 		int amountOfPrimaryObjects = structureToSpawn.primaryObjects.Count;
@@ -442,23 +497,35 @@ public class StructureSpawner : MonoBehaviour
 
 		float radius = structureToSpawn.scatterRadius;
 		Vector2 scatterSize = structureToSpawn.scatterSize;
-		Vector2 offset = new Vector2(initialPoint.x, initialPoint.y);
+		Vector2 offset = new Vector2(initialPoint.x, initialPoint.y) - 0.5f * structureToSpawn.scatterSize;
 
 		List <Vector2> validPoints = ObjectPlacer.GeneratePoints(radius, scatterSize, REJECTION_SAMPLES);
 
+		int amountToSpawn = Random.Range(structureToSpawn.minObjectsToSpawn, structureToSpawn.maxObjectsToSpawn+1);
 
-		foreach (Vector2 workingPoint in validPoints)
+		int maxItterations = 60;
+		while (amountToSpawn > 0)
 		{
-			Vector2 currentPoint = workingPoint + offset;
+			if (validPoints.Count == 0 || maxItterations < 0) { break; }
+			maxItterations -= 1;
+
+			//Choose a random point.
+			Vector2 workingPoint2 = validPoints[Random.Range(0, validPoints.Count)];
+			//Remove it from the list.
+			validPoints.Remove(workingPoint2);
+			//Try spawn at the place.
+
+			Vector2 currentPoint = workingPoint2 + offset;
 
 			WorldObject objectToSpawn = structureToSpawn.primaryObjects[Random.Range(0, amountOfPrimaryObjects)];
 
 			float height = terrainData.GetInterpolatedHeight(currentPoint.x / mapResolution, currentPoint.y / mapResolution);
 			Vector3 targetPosition = new Vector3(currentPoint.x, height, currentPoint.y);
 
-			if (ValidPoint(currentPoint, mapSize))
+			if (ValidPoint(currentPoint, mapSize, ignoreSpawn))
 			{
 				objectToSpawn.CreateMeSnapInternal(targetPosition, parantObject.transform, "", terrainData);
+				amountToSpawn -= 1;
 			}
 		}
 		return new CustomStructureReturnInfo(initialPoint, Vector2.one * radius, parantObject.transform);
@@ -473,7 +540,7 @@ public class StructureSpawner : MonoBehaviour
 		{
 			//SpawnObject(b, mapResolution, Tiles, terrainData);
 			BiomeObj bOb = BiomeManager.Instance.biomeMapping[b.ToString()];
-			SpawnObject(bOb, mapResolution, Tiles, terrainData, mapSize);
+			SpawnObject(bOb, mapResolution, Tiles, terrainData, mapSize, false);
 		}
 	}
 
