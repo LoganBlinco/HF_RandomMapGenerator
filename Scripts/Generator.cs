@@ -5,6 +5,8 @@ using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
+
+
 public class Generator : MonoBehaviour
 {
 	private static Generator _instance;
@@ -175,6 +177,11 @@ public class Generator : MonoBehaviour
 	{
 		seedOffset = 0;
 		Execute();
+	}
+	public void Start()
+	{
+		Debug.Log("starting generatoin");
+		Run_RandomSeed();
 	}
 
 
