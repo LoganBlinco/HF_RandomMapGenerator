@@ -408,7 +408,7 @@ namespace eLF_RandomMaps
 		private void SpawnObject(BiomeObj biomeToSpawn, int mapResolution, Tile[,] Tiles, TerrainData terrainData, int mapSize, bool ignoreSpawn)
 		{
 
-			if (biomeToSpawn.lowDensityObjects.Count == 0) { Debug.Log("no structures for the biome: " + biomeToSpawn); return; }
+			if (biomeToSpawn.GetLowDensityObjectsSize == 0) { Debug.Log("no structures for the biome: " + biomeToSpawn); return; }
 
 			float radius = biomeToSpawn.lowDensityObjectRadius;
 			Vector2 heightMapSize = mapResolution * Vector2.one;
@@ -582,6 +582,9 @@ namespace eLF_RandomMaps
 		public CustomStructureReturnInfo SpawnStructre(WorldStructure structureToSpawn, Vector2 workingPoint, int mapResolution, TerrainData terrainData, int mapSize,
 			Transform parantTransform, bool ignoreSpawn)
 		{
+
+			HandleHeightMapModifier(structureToSpawn, terrainData, mapResolution, workingPoint);
+
 			switch (structureToSpawn.spawnType)
 			{
 				case WorldObjectSpawnTypes.Single:
@@ -601,6 +604,20 @@ namespace eLF_RandomMaps
 			}
 		}
 
+		private void HandleHeightMapModifier(WorldStructure structure,TerrainData terrainData, int mapResolution, Vector2 spawnLocation)
+		{
+			var HeightMapModifiers = structure.HeightMapModifiers;
+			if (HeightMapModifiers.Count == 0) { return; }
+			float[,] hMap = terrainData.GetHeights(0, 0, mapResolution, mapResolution);
+
+			foreach (HeightMap_ModifierData data in HeightMapModifiers)
+			{
+				//then we apply.
+				hMap = HeightMap_BuildingSmoothing.Execute(data, hMap, spawnLocation, Generator.TERRAIN_HEIGHT_LIMIT);
+			}
+			terrainData.SetHeights(0, 0, hMap);
+		}
+
 		private CustomStructureReturnInfo SingleObjectPlacement(WorldStructure structureToSpawn, Vector2 workingPoint, int mapResolution,
 			TerrainData terrainData, int mapSize, Transform parantTransform, bool ignoreSpawn)
 		{
@@ -615,12 +632,13 @@ namespace eLF_RandomMaps
 
 			float height = terrainData.GetInterpolatedHeight(workingPoint.x / mapResolution, workingPoint.y / mapResolution);
 			Vector3 targetPosition = new Vector3(workingPoint.x, height, workingPoint.y);
+			Vector2 randomDir = Random.insideUnitCircle;
 			if (ValidPoint(workingPoint, mapSize, ignoreSpawn))
 			{
 				building.CreateMeSnapInternal(targetPosition, parantObject.transform, "", terrainData);
-				return new CustomStructureReturnInfo(workingPoint, workingPoint, parantObject.transform);
+				return new CustomStructureReturnInfo(workingPoint, randomDir, parantObject.transform);
 			}
-			return new CustomStructureReturnInfo(workingPoint, workingPoint, parantObject.transform);
+			return new CustomStructureReturnInfo(workingPoint, randomDir, parantObject.transform);
 		}
 
 		private CustomStructureReturnInfo SpawnPerpendicularObject(WorldStructure structureToSpawn, Vector2 workingPoint, int mapResolution, TerrainData terrainData, int mapSize,

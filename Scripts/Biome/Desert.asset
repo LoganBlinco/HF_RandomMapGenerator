@@ -19,7 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1a550ead90d3109429879046eaf90157, type: 2}
   - {fileID: 11400000, guid: 5de8145418f60954d8f062f12c4a8a21, type: 2}
   - {fileID: 11400000, guid: 13f4769caaa3a2341a8b9d5a9b345bb7, type: 2}
-  - {fileID: 11400000, guid: 8f92ee96202499746bd16183b2b50a2a, type: 2}
   - {fileID: 11400000, guid: b4c089c7d879a5d4a85f16437390b343, type: 2}
   - {fileID: 11400000, guid: bac843db93d6ddd4bbc322076aa0d060, type: 2}
   - {fileID: 11400000, guid: 9bc74793f4c96794682ed71414205cf0, type: 2}
@@ -30,5 +29,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f980bd968dbdb1e4596fc68ed5c4799b, type: 2}
   middleDensityObjectRadius: 35
   lowDensityObjects:
-  - {fileID: 11400000, guid: 9d6a79c244e2e0240ac35d7a34ed2cfc, type: 2}
+  - {fileID: 11400000, guid: 13fb6464aa55b4a4985d0fb37650a0d6, type: 2}
+  - {fileID: 11400000, guid: f2991524ba16d8f4e8a0bc5d081bc3cb, type: 2}
+  - {fileID: 11400000, guid: 2893dfb045b787a498bd5ddf7e9466de, type: 2}
+  - {fileID: 11400000, guid: d1b1186f37fe8de4f98ab53ec5418fd7, type: 2}
+  - {fileID: 11400000, guid: c4eaf914f617bce4a9da57ada9557fa3, type: 2}
+  - {fileID: 11400000, guid: c4eaf914f617bce4a9da57ada9557fa3, type: 2}
   lowDensityObjectRadius: 75

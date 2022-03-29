@@ -59,7 +59,7 @@ namespace eLF_RandomMaps
 		private void AltSpawnObject(BiomeObj biomeToSpawn, int mapResolution, Tile[,] Tiles, TerrainData terrainData)
 		{
 
-			if (biomeToSpawn.middleDensityObjects.Count == 0) { Debug.Log("no objects for the biome: " + biomeToSpawn); return; }
+			if (biomeToSpawn.GetMiddleDensityObjectsSize == 0) { Debug.Log("no objects for the biome: " + biomeToSpawn); return; }
 
 			float radius = biomeToSpawn.middleDensityObjectRadius;
 			Vector2 heightMapSize = mapResolution * Vector2.one;

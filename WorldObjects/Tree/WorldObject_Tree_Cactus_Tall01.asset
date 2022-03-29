@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b9152c606044a42b211ac1dce295a2, type: 3}
   m_Name: WorldObject_Tree_Cactus_Tall01
   m_EditorClassIdentifier: 
-  spawnProbability: 0.7
+  spawnProbability: 0.6
   spawnWeight: 1
   maxAngle: {x: 0, y: 25, z: 0}
   heightOffset: {x: 0, y: -0.05, z: 0}
   objectPrefab: {fileID: 205324689207657432, guid: 9d2a7e837754e764fb3cdeb8b9095a67,
     type: 3}
-  snapXRotation: 0
   snapYRotation: 0
-  snapZRotation: 0
+  canOverlapObjects: 0
   randomScaleVariation: {x: 0, y: 0, z: 0}
+  approxSize: {x: 0, y: 0, z: 0}
+  pivotFix: {x: 0, y: 0, z: 0}
+  yAxisRotationRandomness: 179

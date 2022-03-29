@@ -18,8 +18,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb12bdd8eaadc3949812fb6e3e68b9cc, type: 2}
   - {fileID: 11400000, guid: 06817b73789bf38499cdc500e6fb93e4, type: 2}
   - {fileID: 11400000, guid: 082cc5b16b80cc14da3e34a3d6308717, type: 2}
-  structureSpawnProbability: 1
-  structureSpawnWeight: 1
+  structureSpawnProbability: 0.5
+  structureSpawnWeight: 0.634
   maxAngle: {x: 0, y: 30, z: 0}
   minObjectsToSpawn: 6
   maxObjectsToSpawn: 12
@@ -33,3 +33,4 @@ MonoBehaviour:
     subStructure_spawnFrom: 2
   - subStructure: {fileID: 11400000, guid: 99f9b26c4a618ef42a6e47fbc297a1ef, type: 2}
     subStructure_spawnFrom: 2
+  HeightMapModifiers: []

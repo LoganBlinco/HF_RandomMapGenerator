@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272e174b53f76e643973a4a9e3d1cc42, type: 3}
+  m_Name: WorldStructure_Theater1v1
+  m_EditorClassIdentifier: 
+  spawnType: 0
+  primaryObjects:
+  - {fileID: 11400000, guid: 7631433779bbd2642a8de69e8aea0be3, type: 2}
+  structureSpawnProbability: 0.5
+  structureSpawnWeight: 1
+  maxAngle: {x: 0, y: 90, z: 0}
+  minObjectsToSpawn: 1
+  maxObjectsToSpawn: 4
+  scatterRadius: 5
+  scatterSize: {x: 10, y: 10}
+  perpendicular_AngleVariance: 15
+  perpendicular_MinDistanceToSpawn: 1.5
+  perpendicular_MaxDistanceToSpawn: 7
+  subStructures:
+  - subStructure: {fileID: 11400000, guid: 99f9b26c4a618ef42a6e47fbc297a1ef, type: 2}
+    subStructure_spawnFrom: 0
+  HeightMapModifiers:
+  - featureRadius: 48
+    HeightMapMask: {fileID: 2800000, guid: 0b4cc309a1b78104c88b25a3057bbcec, type: 3}
+    featureAdditionalHeight: 0

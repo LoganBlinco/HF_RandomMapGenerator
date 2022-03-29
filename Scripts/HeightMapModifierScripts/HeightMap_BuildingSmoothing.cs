@@ -30,7 +30,7 @@ namespace eLF_RandomMaps
 
                     if (ArrayIndexValid(arraySize,arrayX,arrayY))
                     {
-                        averageHeight += heightMap[arrayX, arrayY];
+                        averageHeight += heightMap[arrayY,arrayX];
                         ++numHeightSamples;
                     }
                 }
@@ -59,7 +59,7 @@ namespace eLF_RandomMaps
 
                     if (ArrayIndexValid(arraySize, workingX, workingY))
                     {
-                        heightMap[workingX, workingY] = Mathf.Lerp(heightMap[workingX, workingY], targetHeight, strength);
+                        heightMap[workingY,workingX] = Mathf.Lerp(heightMap[workingY, workingX], targetHeight, strength);
                     }
                 }
             }

@@ -22,3 +22,11 @@ MonoBehaviour:
   maxObjectsToSpawn: 1
   scatterRadius: 5
   scatterSize: {x: 10, y: 10}
+  perpendicular_AngleVariance: 15
+  perpendicular_MinDistanceToSpawn: 1.5
+  perpendicular_MaxDistanceToSpawn: 7
+  subStructures: []
+  HeightMapModifiers:
+  - featureRadius: 25
+    HeightMapMask: {fileID: 2800000, guid: 209050d18d6c21e49a9585cdb165acea, type: 3}
+    featureAdditionalHeight: 0

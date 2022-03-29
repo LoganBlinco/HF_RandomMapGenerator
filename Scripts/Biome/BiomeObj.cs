@@ -20,15 +20,36 @@ namespace eLF_RandomMaps
 
 		[Space(10f)]
 		[Header("Biome Based Object Placement")]
-		public List<WorldObject> middleDensityObjects;
+		[SerializeField]
+		private List<WorldObject> middleDensityObjects;
 		[Range(0, 100)]
 		public float middleDensityObjectRadius = 20;
 		private float middleDensityTotalWeight = 0;
 
-
-		public List<WorldStructure> lowDensityObjects;
+		[SerializeField]
+		[Tooltip("Structures to be placed in the scene.")]
+		private List<WorldStructure> lowDensityObjects;
+		[Tooltip("Min Radius between structures when placing for this biome.")]
 		public float lowDensityObjectRadius = 30;
 		private float lowDensityTotalWeight = 0;
+
+
+		public int GetMiddleDensityObjectsSize
+		{
+			get
+			{
+				return middleDensityObjects.Count;
+			}
+		}
+
+
+		public int GetLowDensityObjectsSize 
+		{
+			get
+			{
+				return lowDensityObjects.Count;
+			}
+		}
 
 
 

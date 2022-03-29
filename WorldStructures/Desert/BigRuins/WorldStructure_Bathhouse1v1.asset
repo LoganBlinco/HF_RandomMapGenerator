@@ -10,21 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 272e174b53f76e643973a4a9e3d1cc42, type: 3}
-  m_Name: WorldStructure_AugustineHouse1v2
+  m_Name: WorldStructure_Bathhouse1v1
   m_EditorClassIdentifier: 
   spawnType: 0
   primaryObjects:
-  - {fileID: 11400000, guid: 1555f5e0b90da3c409bbe8ec19281031, type: 2}
-  structureSpawnProbability: 1
+  - {fileID: 11400000, guid: ea469bbe3a4e767488ccf87c3321fee6, type: 2}
+  structureSpawnProbability: 0.5
   structureSpawnWeight: 1
-  maxAngle: {x: 0, y: 10, z: 0}
+  maxAngle: {x: 0, y: 90, z: 0}
   minObjectsToSpawn: 1
-  maxObjectsToSpawn: 1
+  maxObjectsToSpawn: 4
   scatterRadius: 5
   scatterSize: {x: 10, y: 10}
   perpendicular_AngleVariance: 15
   perpendicular_MinDistanceToSpawn: 1.5
   perpendicular_MaxDistanceToSpawn: 7
   subStructures:
-  - subStructure: {fileID: 11400000, guid: 4b2776445db5433449c6abe1cc104019, type: 2}
+  - subStructure: {fileID: 11400000, guid: 62ff2e9aa9a804c4c931830d4b0e2d67, type: 2}
     subStructure_spawnFrom: 3
+  - subStructure: {fileID: 11400000, guid: c551b4e8b7b21e540880775795e63a3a, type: 2}
+    subStructure_spawnFrom: 0
+  HeightMapModifiers:
+  - featureRadius: 60
+    HeightMapMask: {fileID: 2800000, guid: 0b4cc309a1b78104c88b25a3057bbcec, type: 3}
+    featureAdditionalHeight: 0

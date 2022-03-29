@@ -47,6 +47,6 @@ MonoBehaviour:
   Zone6_MaxDistanceAddition: 12
   Zone6_MaxAngle: 35
   HeightMapModifier:
-    featureRadius: 50
+    featureRadius: 53
     HeightMapMask: {fileID: 2800000, guid: 209050d18d6c21e49a9585cdb165acea, type: 3}
-    featureAdditionalHeight: 2.5
+    featureAdditionalHeight: 2.7

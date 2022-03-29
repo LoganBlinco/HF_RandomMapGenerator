@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b9152c606044a42b211ac1dce295a2, type: 3}
   m_Name: WorldObject_Tree_Broadleaf13
   m_EditorClassIdentifier: 
-  spawnProbability: 0.7
+  spawnProbability: 0.6
   spawnWeight: 1
   maxAngle: {x: 0, y: 25, z: 0}
   heightOffset: {x: 0, y: -0.05, z: 0}
   objectPrefab: {fileID: 7783063934046460409, guid: a5a551e60f0c0fa4fbbc2ce4464b6256,
     type: 3}
-  snapXRotation: 0
   snapYRotation: 0
-  snapZRotation: 0
+  canOverlapObjects: 0
   randomScaleVariation: {x: 0, y: 0, z: 0}
+  approxSize: {x: 0, y: 0, z: 0}
+  pivotFix: {x: 0, y: 0, z: 0}
+  yAxisRotationRandomness: 179

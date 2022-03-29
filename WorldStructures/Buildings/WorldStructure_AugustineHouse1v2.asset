@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 272e174b53f76e643973a4a9e3d1cc42, type: 3}
-  m_Name: WorldStructure_AugustineHouse1v1
+  m_Name: WorldStructure_AugustineHouse1v2
   m_EditorClassIdentifier: 
   spawnType: 0
   primaryObjects:
-  - {fileID: 11400000, guid: 809c3dd30be66ea48a7ad4bdec5e2fd6, type: 2}
+  - {fileID: 11400000, guid: 1555f5e0b90da3c409bbe8ec19281031, type: 2}
   structureSpawnProbability: 1
   structureSpawnWeight: 1
   maxAngle: {x: 0, y: 10, z: 0}
@@ -28,3 +28,7 @@ MonoBehaviour:
   subStructures:
   - subStructure: {fileID: 11400000, guid: 4b2776445db5433449c6abe1cc104019, type: 2}
     subStructure_spawnFrom: 3
+  HeightMapModifiers:
+  - featureRadius: 10
+    HeightMapMask: {fileID: 2800000, guid: 209050d18d6c21e49a9585cdb165acea, type: 3}
+    featureAdditionalHeight: 0

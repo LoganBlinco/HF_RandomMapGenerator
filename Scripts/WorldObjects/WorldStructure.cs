@@ -41,9 +41,10 @@ namespace eLF_RandomMaps
 		[SerializeField]
 		public List<Wrapper_WorldStructures> subStructures = new List<Wrapper_WorldStructures>();
 
-
-
+		public List<HeightMap_ModifierData> HeightMapModifiers = new List<HeightMap_ModifierData>();
 	}
+
+
 
 	[System.Serializable]
 	public class Wrapper_WorldStructures

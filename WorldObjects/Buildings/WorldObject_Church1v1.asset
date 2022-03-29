@@ -18,7 +18,8 @@ MonoBehaviour:
   heightOffset: {x: 0, y: -0.3, z: 0}
   objectPrefab: {fileID: 6540387950682014940, guid: ab776aeca60944743b01c4c74c38f513,
     type: 3}
-  snapYRotation: 1
+  snapYRotation: 0
+  canOverlapObjects: 0
   randomScaleVariation: {x: 0, y: 0, z: 0}
   approxSize: {x: 15, y: 0, z: 15}
   pivotFix: {x: 0, y: 0, z: 0}

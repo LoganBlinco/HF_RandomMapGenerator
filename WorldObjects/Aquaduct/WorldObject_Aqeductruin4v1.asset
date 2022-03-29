@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b9152c606044a42b211ac1dce295a2, type: 3}
   m_Name: WorldObject_Aqeductruin4v1
   m_EditorClassIdentifier: 
-  spawnProbability: 1
+  spawnProbability: 0.8
   spawnWeight: 1
   maxAngle: {x: 0, y: 25, z: 0}
   heightOffset: {x: 0, y: -0.5, z: 0}
   objectPrefab: {fileID: 5511391930517789695, guid: f5368f6977aaff643a865fb55de366f6,
     type: 3}
   snapYRotation: 0
+  canOverlapObjects: 0
   randomScaleVariation: {x: 0, y: 0, z: 0}
   approxSize: {x: 5.8, y: 6, z: 6}
   pivotFix: {x: 0, y: -90, z: 0}
