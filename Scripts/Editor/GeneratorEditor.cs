@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Generator))]
-public class GeneratorEditor : Editor
+
+namespace eLF_RandomMaps
 {
-	public override void OnInspectorGUI()
+	[CustomEditor(typeof(Generator))]
+	public class GeneratorEditor : Editor
 	{
-		DrawDefaultInspector();
-		Generator myScript = (Generator)target;
-		if (GUILayout.Button("Generate Random Seed"))
+		public override void OnInspectorGUI()
 		{
-			myScript.Run_RandomSeed();
-		}
-		if (GUILayout.Button("Generate Same Seed"))
-		{
-			myScript.Run_SetSeed();
+			DrawDefaultInspector();
+			Generator myScript = (Generator)target;
+			if (GUILayout.Button("Generate Random Seed"))
+			{
+				myScript.Run_RandomSeed();
+			}
+			if (GUILayout.Button("Generate Same Seed"))
+			{
+				myScript.Run_SetSeed();
+			}
 		}
 	}
 }

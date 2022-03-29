@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct BiomeGrassWrapper 
+namespace eLF_RandomMaps
 {
-	public GrassConfigFile config;
-	public float noGrassChance;
-	public float spawnWeight;
-
-	public BiomeGrassWrapper(GrassConfigFile c,float noGrass,float w)
+	public struct BiomeGrassWrapper
 	{
-		this.config = c;
-		this.noGrassChance = noGrass;
-		this.spawnWeight = w;
+		public GrassConfigFile config;
+		public float noGrassChance;
+		public float spawnWeight;
+
+		public BiomeGrassWrapper(GrassConfigFile c, float noGrass, float w)
+		{
+			this.config = c;
+			this.noGrassChance = noGrass;
+			this.spawnWeight = w;
+		}
 	}
+
 }

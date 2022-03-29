@@ -2,203 +2,206 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenuAttribute(fileName = "Biome: ", menuName = "TerrainGen/Biomes")]
 
-public class BiomeObj : ScriptableObject
+namespace eLF_RandomMaps
 {
-	[Header("Biome Texture/Detail Infomation")]
-	public List<Block> baseBiomeBlocks;
-	public List<GrassConfigFile> baseDetails;
-
-	private GeneratorSettings biomeNoise;
-
-	private GeneratorSettings generateSettings;
-
-	public Dictionary<int, BiomeGrassWrapper> indexToDetail = new Dictionary<int, BiomeGrassWrapper>();
-
-	[Space(10f)]
-	[Header("Biome Based Object Placement")]
-	public List<WorldObject> middleDensityObjects;
-	[Range(0,100)]
-	public float middleDensityObjectRadius = 20;
-	private float middleDensityTotalWeight = 0;
-
-
-	public List<WorldStructure> lowDensityObjects;
-	public float lowDensityObjectRadius = 30;
-	private float lowDensityTotalWeight = 0;
-
-
-
-
-
-	///REGION FOR OBJECT PLACEMENT
-	#region
-	private void initObjectData()
+	[CreateAssetMenuAttribute(fileName = "Biome: ", menuName = "TerrainGen/Biomes")]
+	public class BiomeObj : ScriptableObject
 	{
-		middleDensityTotalWeight = CalculateObjectWeight(middleDensityObjects);
-		lowDensityTotalWeight = CalculateStructureWeight(lowDensityObjects);
+		[Header("Biome Texture/Detail Infomation")]
+		public List<Block> baseBiomeBlocks;
+		public List<GrassConfigFile> baseDetails;
 
-	}
+		private GeneratorSettings biomeNoise;
+
+		private GeneratorSettings generateSettings;
+
+		public Dictionary<int, BiomeGrassWrapper> indexToDetail = new Dictionary<int, BiomeGrassWrapper>();
+
+		[Space(10f)]
+		[Header("Biome Based Object Placement")]
+		public List<WorldObject> middleDensityObjects;
+		[Range(0, 100)]
+		public float middleDensityObjectRadius = 20;
+		private float middleDensityTotalWeight = 0;
 
 
-	private float CalculateStructureWeight(List<WorldStructure> objects)
-	{
-		float total = 0;
-		foreach (var o in objects)
+		public List<WorldStructure> lowDensityObjects;
+		public float lowDensityObjectRadius = 30;
+		private float lowDensityTotalWeight = 0;
+
+
+
+
+
+		///REGION FOR OBJECT PLACEMENT
+		#region
+		private void initObjectData()
 		{
-			total += o.structureSpawnWeight;
+			middleDensityTotalWeight = CalculateObjectWeight(middleDensityObjects);
+			lowDensityTotalWeight = CalculateStructureWeight(lowDensityObjects);
+
 		}
-		return total;
-	}
 
-	private float CalculateObjectWeight(List<WorldObject> objects)
-	{
-		float total = 0;
-		foreach(var o in objects)
-		{
-			total += o.spawnWeight;
-		}
-		return total;
-	}
 
-	public WorldStructure GetStructureToSpawn()
-	{
-		if (lowDensityObjects.Count == 0) { Debug.Log(this + " has no structures"); return null; }
-		float totalW = lowDensityTotalWeight;
-		float randomVal = Random.Range(0f, 1f);//will need to seed.
-		for (int i = 0; i < lowDensityObjects.Count; i++)
+		private float CalculateStructureWeight(List<WorldStructure> objects)
 		{
-			if (randomVal <= lowDensityObjects[i].structureSpawnWeight / totalW)
+			float total = 0;
+			foreach (var o in objects)
 			{
-				return lowDensityObjects[i];
+				total += o.structureSpawnWeight;
 			}
-			else
-			{
-				randomVal -= lowDensityObjects[i].structureSpawnWeight / totalW;
-			}
+			return total;
 		}
-		Debug.Log("problem finding weighted object for val: " + randomVal);
-		return lowDensityObjects[lowDensityObjects.Count - 1];
-	}
 
-
-	public WorldObject GetObjectToSpawn()
-	{
-		//return middleDensityObjects[0];//TODO IMPLEMENT
-
-		if (middleDensityObjects.Count == 0) { Debug.Log(this+" has no objects"); return null; }
-		float totalW = middleDensityTotalWeight;
-		float randomVal = Random.Range(0f, 1f);//will need to seed.
-		for (int i = 0; i < middleDensityObjects.Count; i++)
+		private float CalculateObjectWeight(List<WorldObject> objects)
 		{
-			if (randomVal <= middleDensityObjects[i].spawnWeight / totalW)
+			float total = 0;
+			foreach (var o in objects)
 			{
-				return middleDensityObjects[i];
+				total += o.spawnWeight;
 			}
-			else
+			return total;
+		}
+
+		public WorldStructure GetStructureToSpawn()
+		{
+			if (lowDensityObjects.Count == 0) { Debug.Log(this + " has no structures"); return null; }
+			float totalW = lowDensityTotalWeight;
+			float randomVal = Random.Range(0f, 1f);//will need to seed.
+			for (int i = 0; i < lowDensityObjects.Count; i++)
 			{
-				randomVal -= middleDensityObjects[i].spawnWeight / totalW;
+				if (randomVal <= lowDensityObjects[i].structureSpawnWeight / totalW)
+				{
+					return lowDensityObjects[i];
+				}
+				else
+				{
+					randomVal -= lowDensityObjects[i].structureSpawnWeight / totalW;
+				}
 			}
+			Debug.Log("problem finding weighted object for val: " + randomVal);
+			return lowDensityObjects[lowDensityObjects.Count - 1];
 		}
-		Debug.Log("problem finding weighted object for val: " + randomVal);
-		return middleDensityObjects[middleDensityObjects.Count - 1];
-	}
-
-	#endregion
 
 
-
-
-	public List<GrassConfigFile> getBaseDetails()
-	{
-		return baseDetails;
-	}
-
-
-
-
-	public Block GetBiomeBlock(float noise)
-	{
-		float size = baseBiomeBlocks.Count;
-		for (int i = 0; i < size; i++)
+		public WorldObject GetObjectToSpawn()
 		{
-			if (noise < i * 1.0f / (float)size)
+			//return middleDensityObjects[0];//TODO IMPLEMENT
+
+			if (middleDensityObjects.Count == 0) { Debug.Log(this + " has no objects"); return null; }
+			float totalW = middleDensityTotalWeight;
+			float randomVal = Random.Range(0f, 1f);//will need to seed.
+			for (int i = 0; i < middleDensityObjects.Count; i++)
 			{
-				return baseBiomeBlocks[i];
+				if (randomVal <= middleDensityObjects[i].spawnWeight / totalW)
+				{
+					return middleDensityObjects[i];
+				}
+				else
+				{
+					randomVal -= middleDensityObjects[i].spawnWeight / totalW;
+				}
 			}
+			Debug.Log("problem finding weighted object for val: " + randomVal);
+			return middleDensityObjects[middleDensityObjects.Count - 1];
 		}
-		//gone through all without finding one
-		return baseBiomeBlocks[(int)size - 1];
-	}
 
-
-	public string getName()
-	{
-		return name;
-	}
-
-	public override string ToString()
-	{
-		string msg = string.Format("biomeName: {0}", getName());
-
-
-		return msg;
-	}
+		#endregion
 
 
 
 
-	/// NEW STUFF
-	/// 
-
-	public int getTexInfoIndex()
-	{
-		return baseBiomeBlocks[0].getTerrainLayerIndex();
-		//return texInfo.index;
-	}
-
-	public int getAltTexIndex()
-	{
-		if (baseBiomeBlocks.Count > 1)
+		public List<GrassConfigFile> getBaseDetails()
 		{
-			return baseBiomeBlocks[1].getTerrainLayerIndex();
+			return baseDetails;
 		}
-		return -1;
-	}
 
-	public void FakeConstructor(long seed)
-	{
-		indexToDetail = new Dictionary<int, BiomeGrassWrapper>();
-		float totalW = 0;
-		foreach(GrassConfigFile grassConfig in baseDetails)
+
+
+
+		public Block GetBiomeBlock(float noise)
 		{
-			totalW += grassConfig.grassWeight;
-		}
-		foreach (GrassConfigFile grassConfig in baseDetails)
-		{
-			var spawnWeight = grassConfig.grassWeight;
-			if (spawnWeight != 1)
+			float size = baseBiomeBlocks.Count;
+			for (int i = 0; i < size; i++)
 			{
-				spawnWeight = spawnWeight / totalW;
+				if (noise < i * 1.0f / (float)size)
+				{
+					return baseBiomeBlocks[i];
+				}
 			}
-			indexToDetail[grassConfig.getDetailLayerIndex()] = new BiomeGrassWrapper(grassConfig, grassConfig.noGrassChance, spawnWeight);
+			//gone through all without finding one
+			return baseBiomeBlocks[(int)size - 1];
 		}
 
 
-		generateSettings = Database_BiomeGenerationSettings.Instance.GetGenerationSettings(this.getName());
-		generateSettings.Initialize(seed);
+		public string getName()
+		{
+			return name;
+		}
+
+		public override string ToString()
+		{
+			string msg = string.Format("biomeName: {0}", getName());
 
 
-		//Object spawner
-		initObjectData();
+			return msg;
+		}
+
+
+
+
+		/// NEW STUFF
+		/// 
+
+		public int getTexInfoIndex()
+		{
+			return baseBiomeBlocks[0].getTerrainLayerIndex();
+			//return texInfo.index;
+		}
+
+		public int getAltTexIndex()
+		{
+			if (baseBiomeBlocks.Count > 1)
+			{
+				return baseBiomeBlocks[1].getTerrainLayerIndex();
+			}
+			return -1;
+		}
+
+		public void FakeConstructor(long seed)
+		{
+			indexToDetail = new Dictionary<int, BiomeGrassWrapper>();
+			float totalW = 0;
+			foreach (GrassConfigFile grassConfig in baseDetails)
+			{
+				totalW += grassConfig.grassWeight;
+			}
+			foreach (GrassConfigFile grassConfig in baseDetails)
+			{
+				var spawnWeight = grassConfig.grassWeight;
+				if (spawnWeight != 1)
+				{
+					spawnWeight = spawnWeight / totalW;
+				}
+				indexToDetail[grassConfig.getDetailLayerIndex()] = new BiomeGrassWrapper(grassConfig, grassConfig.noGrassChance, spawnWeight);
+			}
+
+
+			generateSettings = Database_BiomeGenerationSettings.Instance.GetGenerationSettings(this.getName());
+			generateSettings.Initialize(seed);
+
+
+			//Object spawner
+			initObjectData();
+		}
+
+		public GeneratorSettings getGeneratorSettings()
+		{
+			return generateSettings;
+		}
+
+
+
 	}
-
-	public GeneratorSettings getGeneratorSettings()
-	{
-		return generateSettings;
-	}
-
-
-
 }
